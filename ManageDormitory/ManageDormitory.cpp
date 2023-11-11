@@ -476,7 +476,7 @@ using namespace std;
 int main()
 {
 	MANAGE_STUDENT MS;
-	STUDENT s1("22110092", "Nguyen", "Van", "A", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D0");
+	STUDENT s1("22110099", "Nguyen", "Van", "A", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D0");
 	STUDENT s2("22110022", "Nguyen", "Van", "B", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D01");
 	STUDENT s3("22110062", "Nguyen", "Van", "C", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D011");
 	STUDENT s4("22110072", "Nguyen", "Van", "D", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D012");
