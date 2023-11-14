@@ -2,7 +2,7 @@
 #include <iostream>
 #include"DataStructure.h"
 using namespace std;
-struct MANAGE_STUDENT
+struct ManageStudent
 {
 	NODE* head;
 	NODE* tail;
@@ -12,7 +12,7 @@ struct MANAGE_STUDENT
 		tail = NULL;
 	}
 	// Function for adding a new node to the last of list
-	void addLast(const STUDENT& x) {
+	void addLast(const Student& x) {
 		NODE* node = new NODE();
 		node->data = x;
 		node->next = NULL;
@@ -26,7 +26,7 @@ struct MANAGE_STUDENT
 		}
 	}
 	// Function for adding a new node to list
-	void addNode(const STUDENT& x)
+	void addNode(const Student& x)
 	{
 		NODE* node = new NODE();
 		node->data = x;
@@ -49,7 +49,7 @@ struct MANAGE_STUDENT
 	// Function for adding a new student
 	void addStudent()
 	{
-		STUDENT s;
+		Student s;
 		string studentID;
 		string firstName;
 		string middleName;

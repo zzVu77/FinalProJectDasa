@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 using namespace std;
-struct STUDENT
+struct Student
 {
 	string studentID;
 	string firstName;
@@ -37,7 +37,7 @@ struct STUDENT
 		}
 	}
 
-	STUDENT(string studentID, string lastName, string middleName, string firstName, string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate, string roomID)
+	Student(string studentID, string lastName, string middleName, string firstName, string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate, string roomID)
 	{
 		this->studentID = studentID;
 		this->lastName = lastName;
@@ -55,7 +55,7 @@ struct STUDENT
 		this->status = true;
 
 	}
-	STUDENT() {}
+	Student() {}
 
 
 };

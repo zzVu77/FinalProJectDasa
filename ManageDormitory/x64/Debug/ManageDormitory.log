@@ -1,2 +1,4 @@
 ﻿  ManageDormitory.cpp
+E:\HCM_UTE\Semester 3\DASA\Final_Project\ManageDormitory\ManageDormitory.cpp(480,16): warning C4101: 'MS': unreferenced local variable
+E:\HCM_UTE\Semester 3\DASA\Final_Project\ManageDormitory\ManageRoom.h(186): warning C4715: 'ManageRoom2::findRoom': not all control paths return a value
   ManageDormitory.vcxproj -> E:\HCM_UTE\Semester 3\DASA\Final_Project\x64\Debug\ManageDormitory.exe
