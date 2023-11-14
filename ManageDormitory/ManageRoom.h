@@ -4,7 +4,8 @@
 
 
 struct ManageRoom2
-{private:
+{
+private:
 	NodeTree* head = NULL;
 	//util print
 	void preOrder(NodeTree* root)
@@ -49,6 +50,10 @@ struct ManageRoom2
 	{
 		if (N == NULL)
 			return 0;
+		else if (N->right == NULL)
+			return N->left->height - 0;
+		else if (N->left == NULL)
+			return 0 - N->right->height;
 		return N->left->height - N->right->height;
 	}
 	NodeTree* insert(NodeTree* node, Room key)
@@ -69,9 +74,20 @@ struct ManageRoom2
 			node->right = insert(node->right, key);
 		else
 			return node;
-
-
-		node->height = 1 + max(node->left->height, node->right->height);
+		if (node->left == NULL)
+		{
+			node->height = 1 + node->right->height;
+		}
+		else if (node->right == NULL)
+		{
+			node->height = 1 + node->left->height;
+		}
+		else if (node->left->height >= node->right->height)
+		{
+			node->height = 1 + node->left->height;
+		}
+		else
+			node->height = 1 + node->right->height;
 
 		int balance = Balance(node);
 
@@ -186,12 +202,12 @@ public:
 	}
 	void deleteRoom(int id)
 	{
-		UtildeleteRoom(head, findRoom(id)->data);
+		head = UtildeleteRoom(head, findRoom(id)->data);
 		return;
 	}
 	void deleteRoom(Room a)
 	{
-		UtildeleteRoom(head, a);
+		head = UtildeleteRoom(head, a);
 		return;
 	}
 };

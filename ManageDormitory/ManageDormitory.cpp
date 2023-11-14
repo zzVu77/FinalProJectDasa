@@ -489,12 +489,15 @@ int main()
 	Student s9("22110042", "Nguyen", "Van", "I", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D01");
 	Student s10("2211024", "Nguyen", "Van", "J", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D013");
 	ManageRoom2 a;
-	Room b12;
+	Room b12, b22;
 	NodeTree* b13;
 	b12.editRoom();
+	b22.editRoom();
+	b22.printPhong();
 	a.InsertRoom(b12);
-	//a.printListRoom();
+	a.InsertRoom(b22);
 
+	a.printListRoom();
 	b13 = a.findRoom(1);
 	b13->data.printPhong();
 	b13->data.editRoom();

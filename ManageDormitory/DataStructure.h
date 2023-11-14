@@ -1,6 +1,6 @@
 #pragma once
-#include"STUDENT.h"
-#include"ROOM.h"
+#include"Student.h"
+#include"Room.h"
 struct NODE
 {
 	Student data;
