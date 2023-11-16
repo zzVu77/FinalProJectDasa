@@ -1,11 +1,12 @@
 #pragma once
 #include <iostream>
 #include"DataStructure.h"
+#include"Sort.h"
 using namespace std;
 struct ManageStudent
 {
-	NODE* head;
-	NODE* tail;
+	Node* head;
+	Node* tail;
 	void initListStudent()
 	{
 		head = NULL;
@@ -13,7 +14,7 @@ struct ManageStudent
 	}
 	// Function for adding a new node to the last of list
 	void addLast(const Student& x) {
-		NODE* node = new NODE();
+		Node* node = new Node();
 		node->data = x;
 		node->next = NULL;
 		if (head == NULL) {
@@ -28,7 +29,7 @@ struct ManageStudent
 	// Function for adding a new node to list
 	void addNode(const Student& x)
 	{
-		NODE* node = new NODE();
+		Node* node = new Node();
 		node->data = x;
 		node->next = NULL;
 		if (head == NULL)
@@ -88,7 +89,7 @@ struct ManageStudent
 	{
 		if (isEmptyList() == false)
 		{
-			NODE* temp = head;
+			Node* temp = head;
 			head = head->next;
 			delete temp;
 			if (isEmptyList() == true) tail = NULL;
@@ -108,7 +109,7 @@ struct ManageStudent
 			}
 			else
 			{
-				NODE* temp = head;
+				Node* temp = head;
 				do
 				{
 					temp = temp->next;
@@ -120,9 +121,9 @@ struct ManageStudent
 		}
 	}
 	// Function for getting previous node
-	NODE* getPreviousNode(NODE*& node)
+	Node* getPreviousNode(Node*& node)
 	{
-		NODE* curr = head;
+		Node* curr = head;
 		while (curr != NULL)
 		{
 			if (curr->next != NULL and curr->next == node) return curr;
@@ -131,10 +132,10 @@ struct ManageStudent
 		return NULL;
 	}
 	// Fuunction for searching a student by using ID
-	NODE* searchStudent(string id)
+	Node* searchStudent(string id)
 	{
 		if (head == NULL) return NULL;
-		NODE* node = head;
+		Node* node = head;
 		int i = 0;
 		while (node != NULL and node->data.studentID != id)
 		{
@@ -155,7 +156,7 @@ struct ManageStudent
 		}
 		else
 		{
-			NODE* node = searchStudent(id);
+			Node* node = searchStudent(id);
 			if (head == tail) {
 				removeFirst();
 				cout << "Successfully deleted \n";
@@ -167,7 +168,7 @@ struct ManageStudent
 				cout << "Successfully deleted \n";
 				return;
 			}
-			NODE* pre = getPreviousNode(node);
+			Node* pre = getPreviousNode(node);
 			pre->next = node->next;
 			cout << "Successfully deleted \n";
 			delete(node);
@@ -177,7 +178,7 @@ struct ManageStudent
 	// Function for displaying list student
 	void displayListStudent()
 	{
-		NODE* curr = head;
+		Node* curr = head;
 		int i = 0;
 		while (curr != NULL)
 		{
@@ -196,7 +197,7 @@ struct ManageStudent
 			cout << "Update failed\n";
 			return;
 		}
-		NODE* p = searchStudent(id);
+		Node* p = searchStudent(id);
 		bool flag = true;
 		do
 		{
@@ -333,7 +334,7 @@ struct ManageStudent
 			case 1:
 			{
 				cout << "Input name: "; string str; cin >> str;
-				NODE* current = head;
+				Node* current = head;
 				while (current != nullptr)
 				{
 					if (current->data.firstName == str) { current->data.printInfo(); }
@@ -344,7 +345,7 @@ struct ManageStudent
 			case 2:
 			{
 				cout << "Input gender: "; string str; cin >> str;
-				NODE* current = head;
+				Node* current = head;
 				while (current != nullptr)
 				{
 					if (current->data.gender == str) { current->data.printInfo(); }
@@ -355,7 +356,7 @@ struct ManageStudent
 			case 3:
 			{
 				cout << "Input address: "; string str; cin >> str;
-				NODE* current = head;
+				Node* current = head;
 				while (current != nullptr)
 				{
 					if (current->data.address == str) { current->data.printInfo(); }
@@ -366,7 +367,7 @@ struct ManageStudent
 			case 4:
 			{
 				cout << "Input falcuty: "; string str; cin >> str;
-				NODE* current = head;
+				Node* current = head;
 				while (current != nullptr)
 				{
 					if (current->data.falcuty == str) { current->data.printInfo(); }
@@ -377,7 +378,7 @@ struct ManageStudent
 			case 5:
 			{
 				cout << "Input major: "; string str; cin >> str;
-				NODE* current = head;
+				Node* current = head;
 				while (current != nullptr)
 				{
 					if (current->data.major == str) { current->data.printInfo(); }
@@ -388,7 +389,7 @@ struct ManageStudent
 			case 6:
 			{
 				cout << "Input roomID: "; string str; cin >> str;
-				NODE* current = head;
+				Node* current = head;
 				while (current != nullptr)
 				{
 					if (current->data.roomID == str) { current->data.printInfo(); }
@@ -403,6 +404,10 @@ struct ManageStudent
 			}
 			}
 		} while (flag);
+	}
+	//Function for using Merge sort to sort list student by first and last name
+	void sortStudent() {
+		mergeSort(head);
 	}
 };
 

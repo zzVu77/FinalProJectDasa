@@ -1,10 +1,10 @@
 #pragma once
 #include"Student.h"
 #include"Room.h"
-struct NODE
+struct Node
 {
 	Student data;
-	NODE* next;
+	Node* next;
 };
 struct NodeTree {
 	Room data;
