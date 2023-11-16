@@ -4,18 +4,19 @@
 
 
 struct ManageRoom2
-{private:
+{
+private:
 	NodeTree* head = NULL;
 	//util print
 	void preOrder(NodeTree* root)
 	{
 		if (root != NULL)
 		{
-			root->data.printPhong();
 			preOrder(root->left);
+			root->data.printPhong();
 			preOrder(root->right);
 		}
-		else cout << " ";
+		return;
 	}
 	// cân bằng nếu bên trái thừa
 	NodeTree* rightRotate(NodeTree* y)
@@ -25,9 +26,40 @@ struct ManageRoom2
 
 		x->right = y;
 		y->left = T2;
+		if(y->left == NULL && y->right == NULL)
+			y->height = 1;
+		else if (y->left == NULL)
+		{
+			y->height = 1 + y->right->height;
+		}
+		else if (y->right == NULL)
+		{
+			y->height = 1 + y->left->height;
+		}
+		else if (y->left->height >= y->right->height)
+		{
+			y->height = 1 + y->left->height;
+		}
+		else
+			y->height = 1 + y->right->height;
 
-		y->height = max(y->left->height, y->right->height) + 1;
-		x->height = max(x->left->height, x->right->height) + 1;
+		//
+		if (x->left == NULL && x->right == NULL)
+			x->height = 1;
+		else if (x->left == NULL)
+		{
+			x->height = 1 + x->right->height;
+		}
+		else if (x->right == NULL)
+		{
+			x->height = 1 + x->left->height;
+		}
+		else if (x->left->height >= x->right->height)
+		{
+			x->height = 1 + x->left->height;
+		}
+		else
+			x->height = 1 + x->right->height;
 
 		return x;
 	}
@@ -40,8 +72,41 @@ struct ManageRoom2
 		y->left = x;
 		x->right = T2;
 
-		x->height = max(x->left->height, x->right->height) + 1;
-		y->height = max(y->left->height, y->right->height) + 1;
+		if (x->left == NULL && x->right == NULL)
+			x->height = 1;
+		else if (x->left == NULL)
+		{
+			x->height = 1 + x->right->height;
+		}
+		else if (x->right == NULL)
+		{
+			x->height = 1 + x->left->height;
+		}
+		else if (x->left->height >= x->right->height)
+		{
+			x->height = 1 + x->left->height;
+		}
+		else
+			x->height = 1 + x->right->height;
+
+		//
+
+		if (y->left == NULL && y->right == NULL)
+			y->height = 1;
+		else if (y->left == NULL)
+		{
+			y->height = 1 + y->right->height;
+		}
+		else if (y->right == NULL)
+		{
+			y->height = 1 + y->left->height;
+		}
+		else if (y->left->height >= y->right->height)
+		{
+			y->height = 1 + y->left->height;
+		}
+		else
+			y->height = 1 + y->right->height;
 
 		return y;
 	}
@@ -49,6 +114,10 @@ struct ManageRoom2
 	{
 		if (N == NULL)
 			return 0;
+		else if (N->right == NULL)
+			return N->left->height - 0;
+		else if (N->left == NULL)
+			return 0 - N->right->height;
 		return N->left->height - N->right->height;
 	}
 	NodeTree* insert(NodeTree* node, Room key)
@@ -69,9 +138,22 @@ struct ManageRoom2
 			node->right = insert(node->right, key);
 		else
 			return node;
-
-
-		node->height = 1 + max(node->left->height, node->right->height);
+		if (node->left == NULL && node->right == NULL)
+			node->height = 1;
+		else if (node->left == NULL)
+		{
+			node->height = 1 + node->right->height;
+		}
+		else if (node->right == NULL)
+		{
+			node->height = 1 + node->left->height;
+		}
+		else if (node->left->height >= node->right->height)
+		{
+			node->height = 1 + node->left->height;
+		}
+		else
+			node->height = 1 + node->right->height;
 
 		int balance = Balance(node);
 
@@ -186,12 +268,12 @@ public:
 	}
 	void deleteRoom(int id)
 	{
-		UtildeleteRoom(head, findRoom(id)->data);
+		head = UtildeleteRoom(head, findRoom(id)->data);
 		return;
 	}
 	void deleteRoom(Room a)
 	{
-		UtildeleteRoom(head, a);
+		head = UtildeleteRoom(head, a);
 		return;
 	}
 };

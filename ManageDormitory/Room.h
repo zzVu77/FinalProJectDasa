@@ -5,20 +5,21 @@ using namespace std;
 
 struct Room
 {
-private: 
-	int RoomID;
+private:
+	int RoomID=-1;
 	string TypeRoom;
 	int NumberOfBed;
 	int People;
 	double Cost;
 public:
 	void printPhong() {
-		if (RoomID != -572662307)
-			cout << "ID Room: " << RoomID << " Type: " << TypeRoom << " Number Of Bed : " << NumberOfBed << " People: " << People << " Cost: " << Cost << '\n';
+		
+		cout <<"ID Room: " << RoomID << " Type: " << TypeRoom << " Number Of Bed : " << NumberOfBed << " People: " << People << " Cost: " << Cost << '\n';
+		return;
 	}
 	int getID()
 	{
-		return RoomID;
+		return this->RoomID;
 	}
 	void editRoom()
 	{
