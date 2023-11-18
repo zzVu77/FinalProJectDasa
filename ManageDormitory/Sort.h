@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-#include"DataStructure.h"
+#include"Node.h"
 Node* sortedMerge(Node* a, Node* b) {
     Node* result = NULL;
     if (a == NULL) {

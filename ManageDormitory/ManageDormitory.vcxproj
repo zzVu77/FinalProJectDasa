@@ -130,10 +130,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataStructure.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="ManageHiringRoom.h" />
     <ClInclude Include="ManageRoom.h" />
     <ClInclude Include="ManageStudent.h" />
+    <ClInclude Include="NodeTree.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Student.h" />

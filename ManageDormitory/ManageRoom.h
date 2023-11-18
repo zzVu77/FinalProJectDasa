@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include"DataStructure.h"
+#include"Node.h"
+#include"NodeTree.h"
 #define MAX 100
-
 
 struct ManageRoom2
 {
@@ -264,7 +264,7 @@ public:
 		{
 			return p;
 		}
-		else cout << "Room does not exist! \n";
+		else /*cout << "Room does not exist! \n";*/ return NULL;
 	}
 	void deleteRoom(int id)
 	{

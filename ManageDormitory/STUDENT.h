@@ -36,7 +36,20 @@ struct Student
 				<< enterDate << "\t " << roomID << "\t " << s << "\t " << exitDate << "\n";
 		}
 	}
-
+	void createStudent()
+	{
+		cin.ignore();
+		Student s;
+		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
+		cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
+		cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
+		cout << "Input studenn's first name: "; getline(cin, firstName); s.lastName = firstName;
+		cout << "Input studenn's birthday: "; getline(cin, dob); s.dob = dob;
+		cout << "Input studenn's address: "; getline(cin, address); s.address = address;
+		cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
+		cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
+		cout << "Input studenn's major: "; getline(cin, major); s.major = major;
+	}
 	Student(string studentID, string lastName, string middleName, string firstName, string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate, string roomID)
 	{
 		this->studentID = studentID;

@@ -1,17 +1,15 @@
 #pragma once
 #include <iostream>
-#include"DataStructure.h"
+#include"Node.h"
 #include"Sort.h"
+#include"Date.h"
 using namespace std;
 struct ManageStudent
 {
 	Node* head;
 	Node* tail;
-	void initListStudent()
-	{
-		head = NULL;
-		tail = NULL;
-	}
+public:
+	
 	// Function for adding a new node to the last of list
 	void addLast(const Student& x) {
 		Node* node = new Node();
@@ -46,44 +44,7 @@ struct ManageStudent
 	bool isEmptyList()
 	{
 		return head == NULL;
-	}
-	// Function for adding a new student
-	void addStudent()
-	{
-		Student s;
-		string studentID;
-		string firstName;
-		string middleName;
-		string lastName;
-		string phoneNo;
-		string gender;
-		string address;
-		string dob;
-		string major;
-		string falcuty;
-		string enterDate;
-		string roomID;
-		string exitDate;
-		bool status = true;
-		s.status = status;
-		cout << "*************** Add Student ***************\n";
-		cin.ignore();
-		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
-		cout << "Input studenn's first name: "; getline(cin, firstName); s.firstName = firstName;
-		cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
-		cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
-		cout << "Input studenn's birthday: "; getline(cin, dob); s.dob = dob;
-		cout << "Input studenn's address: "; getline(cin, address); s.address = address;
-		cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
-		cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
-		cout << "Input studenn's major: "; getline(cin, major); s.major = major;
-		cout << "Input studenn's enterDate: "; getline(cin, enterDate); s.enterDate = enterDate;
-		cout << "Input studenn's roomID: "; getline(cin, roomID); s.roomID = roomID;
-		/*cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
-		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
-		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;*/
-		addLast(s);
-	}
+	}	
 	// Function for removing first node
 	void removeFirst()
 	{
@@ -130,6 +91,46 @@ struct ManageStudent
 			curr = curr->next;
 		}
 		return NULL;
+	}
+public:
+	void initListStudent()
+	{
+		head = NULL;
+		tail = NULL;
+	}
+	// Function for adding a new student
+	void addStudent()
+	{
+		Student s;
+		string studentID;
+		string firstName;
+		string middleName;
+		string lastName;
+		string phoneNo;
+		string gender;
+		string address;
+		string dob;
+		string major;
+		string falcuty;
+		string enterDate;
+		string roomID;
+		string exitDate;
+		bool status = true;
+		s.status = status;
+		cout << "*************** Add Student ***************\n";
+		cin.ignore();
+		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
+		cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
+		cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
+		cout << "Input studenn's first name: "; getline(cin, firstName); s.lastName = firstName;
+		cout << "Input studenn's birthday: "; getline(cin, dob); s.dob = dob;
+		cout << "Input studenn's address: "; getline(cin, address); s.address = address;
+		cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
+		cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
+		cout << "Input studenn's major: "; getline(cin, major); s.major = major;
+		//cout << "Input studenn's enterDate: "; getline(cin, enterDate); s.enterDate = enterDate;
+		//cout << "Input studenn's roomID: "; getline(cin, roomID); s.roomID = roomID;
+		addLast(s);
 	}
 	// Fuunction for searching a student by using ID
 	Node* searchStudent(string id)
@@ -249,9 +250,13 @@ struct ManageStudent
 			}
 			case 3:
 			{
-				cout << "Update new birthdate: ";
+				cout << "Update new birthdate: \n";
 				string str;
-				cin >> str;
+				do
+				{
+					cin >> str;		
+					if (checkDate(str) == false) cout << "The date you entered is not valid. Please re-enter !!!\n";
+				} while (checkDate(str)==false);
 				p->data.dob = str;
 				cout << "Update success !!!\n";
 				cout << "New information: "; p->data.printInfo(); cout << endl;
@@ -408,6 +413,18 @@ struct ManageStudent
 	//Function for using Merge sort to sort list student by first and last name
 	void sortStudent() {
 		mergeSort(head);
+	}
+	// Funtion for counting the number of students in the list
+	int countStudent()
+	{
+		int dem = 0;
+		Node* curr = head;
+		while (curr != NULL)
+		{
+			dem++;
+			curr = curr->next;
+		}
+		return dem;
 	}
 };
 
