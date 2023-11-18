@@ -63,6 +63,7 @@ public:
 		this->empty = this->empty - this->list.countStudent();
 		
 	}
+	~Room(){}
 };
 
 

@@ -1,4 +1,4 @@
 ﻿  main.cpp
-E:\HCM_UTE\Semester 3\DASA\Final_Project\ManageDormitory\main.cpp(14,16): warning C4101: 'MS': unreferenced local variable
-E:\HCM_UTE\Semester 3\DASA\Final_Project\ManageDormitory\main.cpp(28,12): warning C4101: 'b13': unreferenced local variable
-  ManageDormitory.vcxproj -> E:\HCM_UTE\Semester 3\DASA\Final_Project\x64\Debug\ManageDormitory.exe
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\main.cpp(14,16): warning C4101: 'MS': unreferenced local variable
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\main.cpp(28,12): warning C4101: 'b13': unreferenced local variable
+  ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\x64\Debug\ManageDormitory.exe
