@@ -69,6 +69,7 @@ struct Student
 
 	}
 	Student() {}
+	~Student() {}
 
 
 };

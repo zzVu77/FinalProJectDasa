@@ -1,4 +1,4 @@
 ﻿  main.cpp
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\main.cpp(14,16): warning C4101: 'MS': unreferenced local variable
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\main.cpp(28,12): warning C4101: 'b13': unreferenced local variable
-  ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\x64\Debug\ManageDormitory.exe
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(166,94): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(265,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\x64\Debug\ManageDormitory.exe

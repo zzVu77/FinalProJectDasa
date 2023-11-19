@@ -18,6 +18,10 @@ struct ManageHiringRoom {
 		}
 		else room->data.addToList();
 		
-
+	}
+	void addStudent2Room()
+	{
+		MR.automaticallyAddRoom(MS);
+		return;
 	}
 };
