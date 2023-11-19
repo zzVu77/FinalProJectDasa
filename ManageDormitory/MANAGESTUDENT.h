@@ -22,12 +22,13 @@ public:
 			tail->next = node;
 			tail = node;
 		}
+		return;
 	}
 	// Function for adding a new node to list
-	void addNode(const Student& x)
+	void addNode(Node* a)
 	{
 		Node* node = new Node();
-		node->data = x;
+		node = a;
 		node->next = NULL;
 		if (head == NULL)
 		{
@@ -54,6 +55,7 @@ public:
 			delete temp;
 			if (isEmptyList() == true) tail = NULL;
 		}
+		return;
 	}
 	// Function for removing last node
 	void removeLast()
@@ -81,7 +83,7 @@ public:
 		}
 	}
 	// Function for getting previous node
-	Node* getPreviousNode(Node*& node)
+	Node* getPreviousNode(Node* node)
 	{
 		Node* curr = head;
 		while (curr != NULL)
@@ -91,7 +93,6 @@ public:
 		}
 		return NULL;
 	}
-public:
 	void initListStudent()
 	{
 		head = NULL;
@@ -169,9 +170,15 @@ public:
 				return;
 			}
 			Node* pre = getPreviousNode(node);
-			pre->next = node->next;
+			if(pre != NULL)
+				pre->next = node->next;
+			else {
+				pre = node->next;
+				head = pre;
+			}
 			cout << "Successfully deleted \n";
 			delete(node);
+			return;
 		}
 
 	}

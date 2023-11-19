@@ -18,6 +18,12 @@ struct ManageHiringRoom {
 			cout << "Room does not exist !!!\n";			
 		}
 		else room->data.addToList();
+		
+	}
+	void addStudent2Room()
+	{
+		MR.automaticallyAddRoom(MS);
+		return;
 	}
 	void showListEmptyRoom()
 	{

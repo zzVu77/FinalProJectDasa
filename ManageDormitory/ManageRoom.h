@@ -17,7 +17,19 @@ private:
 			preOrder(root->right);
 		}
 		return;
-	}	
+	}
+	void UtilprintStudentInRoom(NodeTree* root)
+	{
+		if (root != NULL)
+		{
+			UtilprintStudentInRoom(root->left);
+			cout <<"=====================================" << root->data.getID()<<"==================================\n";
+			root->data.printListStudent();
+			UtilprintStudentInRoom(root->right);
+		}
+		return;
+	}
+		
 	// cân bằng nếu bên trái thừa
 	NodeTree* rightRotate(NodeTree* y)
 	{
@@ -237,6 +249,32 @@ private:
 		}
 		return root;
 	}
+	void UtilautomaticallyAddRoom(NodeTree* root, ManageStudent &liststudent)
+	{
+		if (root != NULL)
+		{
+			root->data.automaticallyAddStudent(liststudent);
+			UtilautomaticallyAddRoom(root->left, liststudent);
+			UtilautomaticallyAddRoom(root->right, liststudent);
+		}
+		return;
+	}
+	void UtilSuggestRoom(NodeTree* root, Student datas, float &saved, int& savedID)
+	{
+		if (root != NULL)
+		{
+			float  p = root->data.scoreSimilarityOfRoom(datas);
+			if (saved <= p)
+			{
+				saved = p;
+				savedID = root->data.getID();
+			}
+			UtilSuggestRoom(root->left, datas,saved,savedID);
+			UtilSuggestRoom(root->right, datas,saved,savedID);
+		}
+		return;
+	}
+
 public:
 	ManageRoom2() {}
 	ManageRoom2(Room a)
@@ -274,6 +312,24 @@ public:
 	void deleteRoom(Room a)
 	{
 		head = UtildeleteRoom(head, a);
+		return;
+	}
+	void automaticallyAddRoom(ManageStudent &liststudent)
+	{
+		UtilautomaticallyAddRoom(head, liststudent);
+		return;
+	}
+	void printStudentInRoom()
+	{
+		UtilprintStudentInRoom(head);
+		return;
+	}
+	void suggestRoom(Student a)
+	{
+		float score = -1;
+		int id(-1);
+		UtilSuggestRoom(head, a,score,id);
+		cout << id<<": "<< score;
 		return;
 	}
 	// in danh sách các phòng đang còn chỗ trống

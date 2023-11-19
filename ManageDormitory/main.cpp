@@ -12,28 +12,65 @@ using namespace std;
 int main()
 {
 	ManageStudent MS;
-	Student s1("22110099", "Nguyen", "Van", "J", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D0");
-	Student s2("22110022", "Nguyen", "Van", "E", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D01");
-	Student s3("22110062", "Nguyen", "Van", "I", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D011");
-	Student s4("22110072", "Nguyen", "Van", "D", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D012");
-	Student s5("22110082", "Nguyen", "Van", "B", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D013");
-	Student s6("22110012", "Nguyen", "Van", "G", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D011");
-	Student s7("22110052", "Nguyen", "Van", "F", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D01");
-	Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D016");
-	Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D01");
-	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D013");
+	Student s1("22110099", "Nguyen", "Van", "J", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023", "D0");
+	Student s2("22110022", "Nguyen", "Van", "E", "24/06/2004", "Nam", "Ha Noi", "12345", "FIE", "IT", "30/10/2023", "D01");
+	Student s3("22110062", "Nguyen", "Van", "I", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023", "D011");
+	Student s4("22110072", "Nguyen", "Van", "D", "24/06/2004", "Nam", "Vung Tau", "12345", "FIE", "IT", "30/10/2023", "D012");
+	Student s5("22110082", "Nguyen", "Van", "B", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "Marketing", "30/10/2023", "D013");
+	Student s6("22110012", "Nguyen", "Van", "G", "24/06/2004", "Nam", "Ha Noi", "12345", "FIE", "IT", "30/10/2023", "D011");
+	Student s7("22110052", "Nguyen", "Van", "F", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023", "D01");
+	Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "Marketing", "30/10/2023", "D016");
+	Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nam", "Vung Tau", "12345", "FIE", "IT", "30/10/2023", "D01");
+	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nam", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D013");
+	Student s11("2211024", "Nguyen", "Van", "A", "25/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "IT", "31/10/2023", "D012");
+	MS.initListStudent();
+	MS.addLast(s1);
+	MS.addLast(s2);
+	MS.addLast(s3);
+	MS.addLast(s4);
+	MS.addLast(s5);	
+	MS.addLast(s6);
+	MS.addLast(s7);
+	MS.addLast(s8);
+	MS.addLast(s9);
+	MS.addLast(s10);
 	ManageRoom2 a;
-	Room b12 (1,"normal",5,2,150);
-	Room b11(2, "normal", 6, 2, 200);
-	NodeTree* b13;
+	Room b12 (1,"normal",5,4,150), 
+		b13(2, "normal", 5, 2, 180), 
+		b14(3, "normal", 5, 3, 180),
+		b15(4, "normal", 3, 2, 200),
+		b16(5, "normal", 2, 2, 210);
 	a.InsertRoom(b12);
-	a.InsertRoom(b11);
-	ManageHiringRoom MH(a);
+	a.InsertRoom(b13);
+	a.InsertRoom(b14);
+	a.InsertRoom(b15);
+	//a.InsertRoom(b16);
+	a.automaticallyAddRoom(MS);
+	a.printListRoom();
+	//b15.addStudent(s9);
+	//b16.addStudent(s11);
+	//a.InsertRoom(b15);
+	//a.InsertRoom(b16);
+	a.printStudentInRoom();
+	//a.suggestRoom(s8);
+	//MS.displayListStudent();
+	/*MS.deleteStudent(s1.studentID);
+	MS.displayListStudent();*/
+	/*b13.automaticallyAddStudent(MS);
+	b13.printListStudent();
+	MS.displayListStudent();
+	b12.automaticallyAddStudent(MS);
+	b12.printListStudent();
+	MS.displayListStudent();
+	b14.automaticallyAddStudent(MS);
+	b14.printListStudent();
+	MS.displayListStudent();*/
+
+	/*ManageHiringRoom MH(a);
 	MH.hireRoom();
-	MH.showListEmptyRoom();
+	a.printListRoom();*/
+	//b12.editRoom();
 	
-	//a.printListRoom();
-	//b12.editRoom();	
 	//b12.addToList();
 	//b12.list.displayListStudent();
 	//cout << b12.empty;
