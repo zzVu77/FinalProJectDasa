@@ -22,16 +22,18 @@ int main()
 	Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D016");
 	Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nam", "HCM", "12345", "FIE", "IT", "30/10/2023", "D01");
 	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nam", "HN", "12345", "FIE", "IT", "30/10/2023", "D013");
-
 	ManageRoom2 a;
-	Room b12 (1,"normal",5,10,150);
+	Room b12 (1,"normal",5,2,150);
+	Room b11(2, "normal", 6, 2, 200);
 	NodeTree* b13;
 	a.InsertRoom(b12);
+	a.InsertRoom(b11);
 	ManageHiringRoom MH(a);
 	MH.hireRoom();
-	a.printListRoom();
-	//b12.editRoom();
+	MH.showListEmptyRoom();
 	
+	//a.printListRoom();
+	//b12.editRoom();	
 	//b12.addToList();
 	//b12.list.displayListStudent();
 	//cout << b12.empty;

@@ -8,8 +8,7 @@ struct ManageStudent
 {
 	Node* head;
 	Node* tail;
-public:
-	
+public:	
 	// Function for adding a new node to the last of list
 	void addLast(const Student& x) {
 		Node* node = new Node();

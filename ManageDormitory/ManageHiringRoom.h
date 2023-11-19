@@ -10,14 +10,18 @@ struct ManageHiringRoom {
 	void hireRoom()
 	{
 		cout << "Input ID room: ";
-		int id; cin >> id;
+		int id; cin >> id;		
+		cout << "---------------------- INPUT STUDENT INFORMATION ----------------------\n ";
 		NodeTree* room= MR.findRoom(id);
 		if (room == NULL) 
 		{
 			cout << "Room does not exist !!!\n";			
 		}
 		else room->data.addToList();
-		
-
+	}
+	void showListEmptyRoom()
+	{
+		cout << "-------------------------------------------- LIST EMPTY ROOM --------------------------------------------\n";
+		MR.printListEmptyRoom();
 	}
 };

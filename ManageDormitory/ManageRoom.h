@@ -17,7 +17,7 @@ private:
 			preOrder(root->right);
 		}
 		return;
-	}
+	}	
 	// cân bằng nếu bên trái thừa
 	NodeTree* rightRotate(NodeTree* y)
 	{
@@ -274,6 +274,18 @@ public:
 	void deleteRoom(Room a)
 	{
 		head = UtildeleteRoom(head, a);
+		return;
+	}
+	// in danh sách các phòng đang còn chỗ trống
+	void printListEmptyRoom()
+	{
+		NodeTree* root = head;
+		if (root != NULL  )
+		{
+			preOrder(root->left);
+			if(root->data.empty > 0) root->data.printPhong();
+			preOrder(root->right);
+		}
 		return;
 	}
 };

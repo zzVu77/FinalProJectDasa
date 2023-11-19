@@ -28,7 +28,7 @@ public:
 	Room(){}
 	void printPhong() {
 		
-		cout <<"ID Room: " << RoomID << " Type: " << TypeRoom << " Number Of Bed : " << NumberOfBed << " People: " << People << " Cost: " << Cost << '\n';
+		cout <<"ID Room: " << RoomID << "\tType: " << TypeRoom << "\tNumber Of Bed : " << NumberOfBed << "\tMax people: " << People <<"\tEmpty: "<<empty << "\tCost: " << Cost << '\n';
 		return;
 	}
 	int getID()
