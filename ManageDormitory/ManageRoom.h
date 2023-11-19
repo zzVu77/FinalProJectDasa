@@ -329,7 +329,7 @@ public:
 		float score = -1;
 		int id(-1);
 		UtilSuggestRoom(head, a,score,id);
-		cout << id;//<<": "<< score;
+		cout << id<<": "<< score;
 		return;
 	}
 };
