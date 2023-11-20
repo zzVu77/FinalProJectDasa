@@ -1,4 +1,4 @@
 ﻿  main.cpp
-E:\HCM_UTE\Semester 3\DASA\Final_Project\ManageDormitory\Room.h(166,94): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\HCM_UTE\Semester 3\DASA\Final_Project\ManageDormitory\Room.h(268,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  ManageDormitory.vcxproj -> E:\HCM_UTE\Semester 3\DASA\Final_Project\x64\Debug\ManageDormitory.exe
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(166,94): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(316,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\x64\Debug\ManageDormitory.exe

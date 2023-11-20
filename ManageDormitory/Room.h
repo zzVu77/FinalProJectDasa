@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include"ManageStudent.h"
 #include <cmath>
 #include <string>
@@ -220,34 +220,83 @@ public:
 		cout << "========================================================================\n";
 		return;
 	}
-	void automaticallyAddStudent(ManageStudent &liststudent)
+	void automaticallyAddStudent(ManageStudent& liststudent)
 	{
 		//ManageStudent liststudent = listS;
-		Student curr = liststudent.head->data;
-		float max(-99999);
-		list.addLast(curr); 	
-		liststudent.deleteStudent(curr.studentID);
-		while (list.countStudent() != People and liststudent.head != NULL)
-		{
-			max = -99999;
-			Node* p = liststudent.head;
-			while (p != NULL and max !=1)
+
+		if (liststudent.head == NULL)
+			return;
+		else {
+			if (list.countStudent() == 0)
 			{
-				if (max < similarity(curr, p->data)) {
-					max = similarity(curr, p->data);
+				Student curr = liststudent.head->data;
+				float max(-99999);
+				list.addLast(curr);
+				liststudent.deleteStudent(curr.studentID);
+				// tìm ra sv phù hợp, add vào list sv của room, xóa khởi list đầu vào
+				while (list.countStudent() != People and liststudent.head != NULL)
+				{
+					max = -99999;
+					Node* p = liststudent.head;
+					while (p != NULL and max != 1)
+					{
+						if (max < similarity(curr, p->data)) {
+							max = similarity(curr, p->data);
+						}
+						p = p->next;
+					}
+					Node* p1 = liststudent.head;
+					while (p1->next != NULL and similarity(curr, p1->data) != max)
+					{
+						p1 = p1->next;
+					}
+					list.addLast(p1->data);
+					liststudent.deleteStudent(p1->data.studentID);
 				}
-				p = p->next;
+				return;
 			}
-			Node* p1 = liststudent.head;
-			while (p1->next != NULL and similarity(curr, p1->data) != max)
-			{
-				p1 = p1->next;
+			else {
+				float max = -99999;
+				// tìm ra sv phù hợp so với sv có sẵn trong list, add vào list sv của room, xóa khởi list đầu vào
+				while (list.countStudent() != People and liststudent.head != NULL)
+				{
+					max = -99999;
+					Node* p = liststudent.head;
+					Node* curr = list.head;
+					while (p != NULL)
+					{
+						float total = 0;
+						while (curr != NULL)
+						{
+							total += similarity(curr->data, p->data);
+							curr = curr->next;
+						}
+						if (total >= max) {
+							max = total;
+						}
+						p = p->next;
+					}
+					Node* p1 = liststudent.head;
+					Node* curr1 = list.head;
+					float sumScore(0);
+					while (p1->next != NULL)
+					{
+						sumScore = 0;
+						while (curr1 != NULL)
+						{
+							sumScore += similarity(curr1->data, p1->next->data);
+							curr1 = curr1->next;
+						}
+						if (sumScore != max)
+							p1 = p1->next;
+						else break;
+					}
+					list.addLast(p1->data);
+					liststudent.deleteStudent(p1->data.studentID);
+				}
+				return;
 			}
-			list.addLast(p1->data); 		
-			liststudent.deleteStudent(p1->data.studentID);			
 		}
-		this->empty = this->People - this->list.countStudent();
-		return;
 	}
 	void addStudent(Student a)
 	{
