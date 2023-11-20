@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
-double convertAddress(string address)
+float convertAddress(string address)
 {
 	if (address == "Lai Chau")
 		return 1;
@@ -134,7 +134,7 @@ double convertAddress(string address)
 		return 57;
 	else return 0;
 }
-double convertMajor(string major)
+float convertMajor(string major)
 {
 	if (major == "IT")
 		return 10;
@@ -162,8 +162,8 @@ public:
 	ManageStudent list;	 	
 	float similarity(Student a, Student b)
 	{
-		double x1 = convertAddress(a.address), x2 = convertMajor(a.major), y1(convertAddress(b.address)), y2(convertMajor(b.major));
-		return round((x1 * y1 + x2 * y2) / (sqrt(x1 * x1 + x2 * x2) * sqrt(y1 * y1 + y2 * y2))*100)/100;
+		float x1 = convertAddress(a.address), x2 = convertMajor(a.major), y1(convertAddress(b.address)), y2(convertMajor(b.major));
+		return (x1 * y1 + x2 * y2) / (sqrt(x1 * x1 + x2 * x2) * sqrt(y1 * y1 + y2 * y2));
 	}
 public:
 	Room(int idRoom, string typeRoom, int numberOfBed, int people, double cost)
@@ -256,15 +256,15 @@ public:
 				return;
 			}
 			else {
-				float max = -99999;
+				float max = 0;
 				// tìm ra sv phù hợp so với sv có sẵn trong list, add vào list sv của room, xóa khởi list đầu vào
 				while (list.countStudent() != People and liststudent.head != NULL)
 				{
-					max = -99999;
+					max = 0;
 					Node* p = liststudent.head;
-					Node* curr = list.head;
 					while (p != NULL)
 					{
+						Node* curr = list.head;
 						float total = 0;
 						while (curr != NULL)
 						{
@@ -277,14 +277,14 @@ public:
 						p = p->next;
 					}
 					Node* p1 = liststudent.head;
-					Node* curr1 = list.head;
 					float sumScore(0);
-					while (p1->next != NULL)
+					while (p1 != NULL)
 					{
 						sumScore = 0;
+						Node* curr1 = list.head;
 						while (curr1 != NULL)
 						{
-							sumScore += similarity(curr1->data, p1->next->data);
+							sumScore += similarity(curr1->data, p1->data);
 							curr1 = curr1->next;
 						}
 						if (sumScore != max)
