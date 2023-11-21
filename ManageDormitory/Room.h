@@ -240,13 +240,13 @@ public:
 					Node* p = liststudent.head;
 					while (p != NULL and max != 1)
 					{
-						if (max < similarity(curr, p->data)) {
+						if (max < similarity(curr, p->data) and curr.gender==p->data.gender) {
 							max = similarity(curr, p->data);
 						}
 						p = p->next;
 					}
 					Node* p1 = liststudent.head;
-					while (p1->next != NULL and similarity(curr, p1->data) != max)
+					while (p1->next != NULL and similarity(curr, p1->data) != max and curr.gender == p1->data.gender)
 					{
 						p1 = p1->next;
 					}
@@ -266,13 +266,16 @@ public:
 					{
 						Node* curr = list.head;
 						float total = 0;
-						while (curr != NULL)
+						if (p->data.gender == curr->data.gender)
 						{
-							total += similarity(curr->data, p->data);
-							curr = curr->next;
-						}
-						if (total >= max) {
-							max = total;
+							while (curr != NULL)
+							{
+								total += similarity(curr->data, p->data);
+								curr = curr->next;
+							}
+							if (total >= max) {
+								max = total;
+							}
 						}
 						p = p->next;
 					}
@@ -282,10 +285,13 @@ public:
 					{
 						sumScore = 0;
 						Node* curr1 = list.head;
-						while (curr1 != NULL)
+						if (p1->data.gender == curr1->data.gender)
 						{
-							sumScore += similarity(curr1->data, p1->data);
-							curr1 = curr1->next;
+							while (curr1 != NULL)
+							{
+								sumScore += similarity(curr1->data, p1->data);
+								curr1 = curr1->next;
+							}
 						}
 						if (sumScore != max)
 							p1 = p1->next;

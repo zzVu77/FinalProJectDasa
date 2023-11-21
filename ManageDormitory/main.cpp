@@ -12,8 +12,8 @@ using namespace std;
 int main()
 {
 	ManageStudent MS;
-	Student s1("22110099", "Nguyen", "Van", "J", "24/06/2004", "Nam", "Da Nang", "12345", "FIE", "IT", "30/10/2023", "D0");
-	Student s2("22110022", "Nguyen", "Van", "E", "24/06/2004", "Nam", "Ha Noi", "12345", "FIE", "IT", "30/10/2023", "D01");
+	Student s1("22110099", "Nguyen", "Van", "J", "24/06/2004", "Nu", "Da Nang", "12345", "FIE", "IT", "30/10/2023", "D0");
+	Student s2("22110022", "Nguyen", "Van", "E", "24/06/2004", "Nu", "Ha Noi", "12345", "FIE", "IT", "30/10/2023", "D01");
 	Student s3("22110062", "Nguyen", "Van", "I", "24/06/2004", "Nam", "Hue", "12345", "FIE", "IT", "30/10/2023", "D011");
 	Student s4("22110072", "Nguyen", "Van", "D", "24/06/2004", "Nam", "Vung Tau", "12345", "FIE", "IT", "30/10/2023", "D012");
 	Student s5("22110082", "Nguyen", "Van", "B", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "Marketing", "30/10/2023", "D013");
@@ -21,7 +21,7 @@ int main()
 	Student s7("22110052", "Nguyen", "Van", "F", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023", "D01");
 	Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "Marketing", "30/10/2023", "D016");
 	Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nam", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D01");
-	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nam", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D013");
+	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nu", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D013");
 	Student s11("2211024", "Nguyen", "Van", "A", "25/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "IT", "31/10/2023", "D012");
 	MS.initListStudent();
 	MS.addLast(s1);
