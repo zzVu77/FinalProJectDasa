@@ -208,10 +208,10 @@ public:
 	{
 		Student s;
 		s.createStudent();		
-		s.roomID = this->RoomID;
+		//s.roomID = this->RoomID;
 		s.status = true;
 		this->list.addLast(s);
-		this->empty = this->empty - this->list.countStudent();
+		this->empty = this->empty -1;
 		
 	}
 	void printListStudent()
@@ -233,6 +233,7 @@ public:
 				float max(-99999);
 				int numberOfGender(liststudent.countStudentGender(curr.gender));
 				list.addLast(curr);
+				this->empty--;
 				liststudent.deleteStudent(curr.studentID);
 				// tìm ra sv phù hợp, add vào list sv của room, xóa khởi list đầu vào
 				while (list.countStudent() != People and liststudent.head != NULL and numberOfGender != list.countStudent() )
@@ -257,6 +258,7 @@ public:
 						p1 = p1->next;
 					}
 					list.addLast(p1->data);
+					this->empty--;
 					liststudent.deleteStudent(p1->data.studentID);
 				}
 				return;
@@ -304,16 +306,17 @@ public:
 						else break;
 					}
 					list.addLast(p1->data);
+					this->empty--;
 					liststudent.deleteStudent(p1->data.studentID);
 				}
 				return;
 			}
 		}
 	}
-	void addStudent(Student a)
+	void addStudent(const Student a)
 	{
 		list.addLast(a);
-		
+		this->empty--;
 		return;
 	}
 	float scoreSimilarityOfRoom(Student a)
@@ -326,6 +329,30 @@ public:
 			p = p->next;
 		}
 		return total / list.countStudent()*1.0;
+	}
+	void deleteStudent(string id)
+	{
+		list.deleteStudent(id);
+		return;
+	}
+	bool checkStudentInRoom(string id)
+	{
+		if (list.searchStudent(id) == NULL)
+			return false;
+		else return true;
+	}
+	Student getStudent(string id)
+	{
+		Student a;
+		Node* p = list.searchStudent(id);
+		a = p->data;
+		return a;
+	}
+	bool isEmpty()
+	{
+		if ((list.countStudent()- People) == 0)
+			return false;
+		return true;
 	}
 	~Room(){}
 };

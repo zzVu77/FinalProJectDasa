@@ -19,7 +19,6 @@ struct ManageHiringRoom {
 			cout << "Room does not exist !!!\n";			
 		}
 		else room->data.addToList();
-		
 	}
 	void addStudent2Room()
 	{
@@ -31,5 +30,5 @@ struct ManageHiringRoom {
 		cout << "-------------------------------------------- LIST EMPTY ROOM --------------------------------------------\n";
 		MR.printListEmptyRoom();
 	}
-
+	
 };

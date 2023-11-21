@@ -14,7 +14,7 @@ struct Student
 	string major;
 	string falcuty;
 	string enterDate;
-	string roomID;
+//	string roomID;
 	string exitDate;
 	bool status;
 
@@ -26,14 +26,14 @@ struct Student
 			s = "Hiring";
 			cout << studentID << "\t " << lastName << " " << middleName << " " << firstName << "\t " << dob << "\t " << gender << "\t "
 				<< address << "\t " << phoneNo << "\t " << falcuty << "\t " << major << "\t "
-				<< enterDate << "\t " << roomID << "\t " << s << "\n";
+				<< enterDate << "\t " /* << roomID << "\t "*/ << s << "\n";
 		}
 		else
 		{
 			s = "Ended";
 			cout << studentID << "\t " << lastName << " " << middleName << " " << firstName << "\t " << dob << "\t " << gender << "\t "
 				<< address << "\t " << phoneNo << "\t " << falcuty << "\t " << major << "\t "
-				<< enterDate << "\t " << roomID << "\t " << s << "\t " << exitDate << "\n";
+				<< enterDate << "\t " /* << roomID << "\t "*/ << s << "\t " << exitDate << "\n";
 		}
 	}
 	void createStudent()
@@ -50,7 +50,7 @@ struct Student
 		cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
 		cout << "Input studenn's major: "; getline(cin, major); s.major = major;
 	}
-	Student(string studentID, string lastName, string middleName, string firstName, string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate, string roomID)
+	Student(string studentID, string lastName, string middleName, string firstName, string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate)
 	{
 		this->studentID = studentID;
 		this->lastName = lastName;
@@ -63,11 +63,11 @@ struct Student
 		this->falcuty = falcuty;
 		this->major = major;
 		this->enterDate = enterDate;
-		this->enterDate = enterDate;
-		this->roomID = roomID;
+//		this->enterDate = enterDate;
+//		this->roomID = roomID;
 		this->status = true;
-
 	}
+
 	Student() {}
 	~Student() {}
 

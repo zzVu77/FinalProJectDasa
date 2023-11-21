@@ -12,9 +12,33 @@ private:
 	{
 		if (root != NULL)
 		{
-			preOrder(root->left);
 			root->data.printPhong();
+			preOrder(root->left);
 			preOrder(root->right);
+		}
+		return;
+	}
+	void preOrderEmpty(NodeTree* root)
+	{
+		if (root != NULL)
+		{
+			if(root->data.isEmpty())
+				root->data.printPhong();
+			preOrderEmpty(root->left);
+			preOrderEmpty(root->right);
+		}
+		return;
+	}
+	void utilFindIdRoomWithStudent(NodeTree* root, string id, int& saveID)
+	{
+		if (root != NULL )
+		{
+			if (root->data.checkStudentInRoom(id))
+			{
+				saveID = root->data.getID();
+			}
+			utilFindIdRoomWithStudent(root->left,id, saveID);
+			utilFindIdRoomWithStudent(root->right,id, saveID);
 		}
 		return;
 	}
@@ -192,15 +216,20 @@ private:
 		return node;
 	}
 	//tìm node trong tree
-	bool ifNodeExists(NodeTree* node, int key)
+	bool ifNodeExists(NodeTree* node, int key, NodeTree*& saved)
 	{
 		if (node == NULL)
 			return false;
 		if (node->data.getID() == key)
+		{
+			saved = node;
 			return true;
-		bool res1 = ifNodeExists(node->left, key);
-		if (res1) return true;
-		bool res2 = ifNodeExists(node->right, key);
+		}
+		bool res1 = ifNodeExists(node->left, key, saved);
+		if (res1) {
+			return true;
+		}
+		bool res2 = ifNodeExists(node->right, key,saved);
 
 		return res2;
 	}
@@ -286,6 +315,40 @@ public:
 		p->height = 1;
 		head = p;
 	}
+	void readfile(const char fname[])
+	{
+		ifstream file;
+		int ok;
+		file.open(fname);
+		if (!file) {
+			cerr << "Error: file not opened." << endl;
+			return;
+		}
+
+		//Node* q = head;
+		while (!file.eof())
+		{
+			string id;
+			string type;
+			string beds;
+			string capacity;
+			string cost;
+			//xoa utf neu neu can
+			//if (i == 0)
+			//{
+			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
+			//}
+			getline(file, id, ',');
+			getline(file, type, ',');
+			getline(file, beds, ',');
+			getline(file, capacity, ',');
+			getline(file, cost, '\n');
+
+			Room a(stoi(id), type, stoi(beds), stoi(capacity), stod(cost) * 1.0);
+			InsertRoom(a);
+		}
+		file.close();
+	}
 	void InsertRoom(Room a)
 	{
 		head = insert(head, a);
@@ -296,11 +359,11 @@ public:
 	}
 	NodeTree* findRoom(int id)
 	{
-		NodeTree* p = new NodeTree();
+		NodeTree* p = new NodeTree(), *q = new NodeTree();
 		p = head;
-		if (ifNodeExists(p, id))
+		if (ifNodeExists(p, id, q))
 		{
-			return p;
+			return q;
 		}
 		else /*cout << "Room does not exist! \n";*/ return NULL;
 	}
@@ -324,6 +387,10 @@ public:
 		UtilprintStudentInRoom(head);
 		return;
 	}
+	void printRoomEmpty()
+	{
+
+	}
 	void suggestRoom(Student a)
 	{
 		float score = -1;
@@ -335,13 +402,56 @@ public:
 	// in danh sách các phòng đang còn chỗ trống
 	void printListEmptyRoom()
 	{
-		NodeTree* root = head;
-		if (root != NULL  )
+		cout << "==========================empty room===============================================\n";
+		preOrderEmpty(head);
+		return;
+	}
+	void hiringRoom()
+	{
+		
+		cout << "enter id: ";
+		string id;
+		getline(cin, id);
+		int saveID(-1);
+		NodeTree* run = head;
+		utilFindIdRoomWithStudent(run, id, saveID);
+		if (saveID != -1)
 		{
-			preOrder(root->left);
-			if(root->data.empty > 0) root->data.printPhong();
-			preOrder(root->right);
+			NodeTree* p = findRoom(saveID);
+			Student sv = p->data.getStudent(id);
+			cout << "enter ID room: ";
+			int idRoom;
+			cin >> idRoom;
+			NodeTree* q = findRoom(idRoom);
+			if (q->data.People - q->data.list.countStudent() != 0)
+			{
+				p->data.deleteStudent(id);
+				q->data.addStudent(sv);
+				cout << "success!!\n";
+			}
+			else
+			{
+				cout << "room is full\n";
+			}
 		}
+		else cout << "couldn't find it\n";
+		return;
+	}
+	void checkOut()
+	{
+		cout << "enter id: ";
+		string id;
+		getline(cin, id);
+		int saveID(-1);
+		NodeTree* run = head;
+		utilFindIdRoomWithStudent(run, id, saveID);
+		if (saveID != -1)
+		{
+			NodeTree* p = findRoom(saveID);
+			p->data.deleteStudent(id);
+			cout << "success!!!\n";
+		}
+		else cout << "couldn't find it\n";
 		return;
 	}
 };

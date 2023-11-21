@@ -3,6 +3,7 @@
 #include"Node.h"
 #include"Sort.h"
 #include"Date.h"
+#include <fstream>
 using namespace std;
 struct ManageStudent
 {
@@ -10,6 +11,41 @@ struct ManageStudent
 	Node* tail;
 public:	
 	// Function for adding a new node to the last of list
+	void readfile(const char fname[])
+	{
+		ifstream file;
+
+		file.open(fname);
+		if (!file) {
+			cerr << "Error: file not opened." << endl;
+			return;
+		}
+
+		//Node* q = head;
+		while (!file.eof())
+		{
+			Student a;
+			//xoa utf neu neu can
+			//if (i == 0)
+			//{
+			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
+			//}
+			getline(file, a.studentID, ',');
+			getline(file, a.lastName, ',');
+			getline(file, a.middleName, ',');
+			getline(file, a.firstName, ',');
+			getline(file, a.dob, ',');
+			getline(file, a.gender, ',');
+			getline(file, a.address, ',');
+			getline(file, a.phoneNo, ',');
+			getline(file, a.falcuty, ',');
+			getline(file, a.major, ',');
+			getline(file, a.enterDate, '\n');
+			addLast(a);
+
+		}
+		file.close();
+	}
 	void addLast(const Student& x) {
 		Node* node = new Node();
 		node->data = x;
@@ -137,12 +173,10 @@ public:
 	{
 		if (head == NULL) return NULL;
 		Node* node = head;
-		int i = 0;
 		while (node != NULL and node->data.studentID != id)
 		{
 			if (node->next == NULL and node->data.studentID != id) return NULL;
 			node = node->next;
-			i++;
 		}
 		return node;
 	}
@@ -336,7 +370,7 @@ public:
 			cout << "3. Student's address: \n";
 			cout << "4. Student's falcuty: \n";
 			cout << "5. Student's major: \n";
-			cout << "6. Student's roomID:\n";
+//			cout << "6. Student's roomID:\n";
 			cout << "0. Exit\n";
 			cout << "*********************************************************\n";
 			int n; cout << "Input: "; cin >> n;
@@ -397,7 +431,7 @@ public:
 				}
 				break;
 			}
-			case 6:
+			/*case 6:
 			{
 				cout << "Input roomID: "; string str; cin >> str;
 				Node* current = head;
@@ -407,7 +441,7 @@ public:
 					current = current->next;
 				}
 				break;
-			}
+			}*/
 			case 0:
 			{
 				flag = false;

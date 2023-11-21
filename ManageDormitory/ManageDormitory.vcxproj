@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Database.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="ManageHiringRoom.h" />
