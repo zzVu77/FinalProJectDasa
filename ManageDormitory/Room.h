@@ -231,22 +231,28 @@ public:
 			{
 				Student curr = liststudent.head->data;
 				float max(-99999);
+				int numberOfGender(liststudent.countStudentGender(curr.gender));
 				list.addLast(curr);
 				liststudent.deleteStudent(curr.studentID);
 				// tìm ra sv phù hợp, add vào list sv của room, xóa khởi list đầu vào
-				while (list.countStudent() != People and liststudent.head != NULL)
+				while (list.countStudent() != People and liststudent.head != NULL and numberOfGender != list.countStudent() )
 				{
 					max = -99999;
 					Node* p = liststudent.head;
+					
 					while (p != NULL and max != 1)
 					{
-						if (max < similarity(curr, p->data) and curr.gender==p->data.gender) {
-							max = similarity(curr, p->data);
+						if (curr.gender == p->data.gender)
+						{
+							if (max < similarity(curr, p->data)) {
+								max = similarity(curr, p->data);
+							}
 						}
 						p = p->next;
 					}
+					
 					Node* p1 = liststudent.head;
-					while (p1->next != NULL and similarity(curr, p1->data) != max and curr.gender == p1->data.gender)
+					while ((p1 != NULL and similarity(curr, p1->data) != max) or (p1 != NULL and curr.gender !=p1->data.gender) )
 					{
 						p1 = p1->next;
 					}

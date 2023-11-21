@@ -432,5 +432,17 @@ public:
 		}
 		return dem;
 	}
+	int countStudentGender(string gender)
+	{
+		int dem = 0;
+		Node* curr = head;
+		while (curr != NULL)
+		{
+			if(curr->data.gender==gender)
+				dem++;
+			curr = curr->next;
+		}
+		return dem;
+	}
 };
 
