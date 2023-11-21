@@ -3,7 +3,7 @@
 #include"NodeTree.h"
 #define MAX 100
 
-struct ManageRoom2
+struct ManageRoom
 {
 private:
 	NodeTree* head = NULL;
@@ -276,8 +276,8 @@ private:
 	}
 
 public:
-	ManageRoom2() {}
-	ManageRoom2(Room a)
+	ManageRoom() {}
+	ManageRoom(Room a)
 	{
 		NodeTree* p = new NodeTree();
 		p->data = a;

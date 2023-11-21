@@ -4,9 +4,10 @@
 #include"ManageStudent.h"
 using namespace std;
 struct ManageHiringRoom {
-	ManageRoom2 MR;
+	ManageRoom MR;
 	ManageStudent MS;
-	ManageHiringRoom(const ManageRoom2& roomManager) : MR(roomManager) {}
+	ManageHiringRoom(const ManageRoom& roomManager) : MR(roomManager) {
+	}
 	void hireRoom()
 	{
 		cout << "Input ID room: ";
@@ -30,4 +31,5 @@ struct ManageHiringRoom {
 		cout << "-------------------------------------------- LIST EMPTY ROOM --------------------------------------------\n";
 		MR.printListEmptyRoom();
 	}
+
 };

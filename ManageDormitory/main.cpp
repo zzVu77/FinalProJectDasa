@@ -18,11 +18,11 @@ int main()
 	Student s4("22110072", "Nguyen", "Van", "D", "24/06/2004", "Nu", "Vung Tau", "12345", "FIE", "IT", "30/10/2023", "D012");
 	Student s5("22110082", "Nguyen", "Van", "B", "24/06/2004", "Nu", "Ho Chi Minh", "12345", "FIE", "Marketing", "30/10/2023", "D013");
 	Student s6("22110012", "Nguyen", "Van", "G", "24/06/2004", "Nu", "Ha Noi", "12345", "FIE", "IT", "30/10/2023", "D011");
-	Student s7("22110052", "Nguyen", "Van", "F", "24/06/2004", "Nu", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023", "D01");
-	Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nu", "Tay Ninh", "12345", "FIE", "Marketing", "30/10/2023", "D016");
-	Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nu", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D01");
-	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nu", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D013");
-	Student s11("2211024", "Nguyen", "Van", "A", "25/06/2004", "Nu", "Tay Ninh", "12345", "FIE", "IT", "31/10/2023", "D012");
+	Student s7("22110052", "Nguyen", "Van", "F", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023", "D01");
+	Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "Marketing", "30/10/2023", "D016");
+	Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nam", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D01");
+	Student s10("2211024", "Nguyen", "Van", "A", "24/06/2004", "Nam", "Dong Nai", "12345", "FIE", "IT", "30/10/2023", "D013");
+	Student s11("2211024", "Nguyen", "Van", "A", "25/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "IT", "31/10/2023", "D012");
 	MS.initListStudent();
 	MS.addLast(s1);
 	MS.addLast(s2);
@@ -34,7 +34,7 @@ int main()
 	MS.addLast(s8);
 	MS.addLast(s9);
 	MS.addLast(s10);
-	ManageRoom2 a;
+	ManageRoom a;
 	Room b12 (1,"normal",5,4,150), 
 		b13(2, "normal", 5, 2, 180), 
 		b14(3, "normal", 5, 3, 180),
