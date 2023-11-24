@@ -45,11 +45,12 @@ int main()
 	a.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/FinalProJectDasa/rooms.txt");
 	a.automaticallyAddRoom(MS);
 	a.printStudentInRoom();
-	a.printListEmptyRoom();
-	a.checkOut();
-	a.hiringRoom();
-
-	a.printStudentInRoom();
+//	a.printListEmptyRoom();
+//	a.checkOut();
+//	a.hiringRoom();
+	NodeTree* p =a.findRoom(4);
+	p->data.printListStudent();
+//	a.printStudentInRoom();
 	//a.suggestRoom(s8);
 	//MS.displayListStudent();
 	/*MS.deleteStudent(s1.studentID);

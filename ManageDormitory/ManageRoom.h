@@ -216,21 +216,25 @@ private:
 		return node;
 	}
 	//tìm node trong tree
-	bool ifNodeExists(NodeTree* node, int key, NodeTree*& saved)
+	bool ifNodeExists(NodeTree*& node, int key)
 	{
 		if (node == NULL)
 			return false;
 		if (node->data.getID() == key)
 		{
-			saved = node;
 			return true;
 		}
-		bool res1 = ifNodeExists(node->left, key, saved);
+		bool res1 = ifNodeExists(node->left, key);
 		if (res1) {
+			node = node->left;
 			return true;
 		}
-		bool res2 = ifNodeExists(node->right, key,saved);
-
+		bool res2 = ifNodeExists(node->right, key);
+		if (res2)
+		{
+			node = node->right;
+			return true;
+		}
 		return res2;
 	}
 	//tìm node nhỏ nhất
@@ -359,11 +363,11 @@ public:
 	}
 	NodeTree* findRoom(int id)
 	{
-		NodeTree* p = new NodeTree(), *q = new NodeTree();
+		NodeTree* p = new NodeTree();
 		p = head;
-		if (ifNodeExists(p, id, q))
+		if (ifNodeExists(p, id))
 		{
-			return q;
+			return p;
 		}
 		else /*cout << "Room does not exist! \n";*/ return NULL;
 	}

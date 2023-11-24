@@ -2,5 +2,5 @@
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(72,10): warning C4305: 'return': truncation from 'double' to 'float'
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(122,10): warning C4305: 'return': truncation from 'double' to 'float'
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\Room.h(331,37): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\ManageRoom.h(321,7): warning C4101: 'ok': unreferenced local variable
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\ManageDormitory\ManageRoom.h(325,7): warning C4101: 'ok': unreferenced local variable
   ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\FinalProJectDasa\x64\Debug\ManageDormitory.exe
