@@ -46,6 +46,7 @@ public:
 		}
 		file.close();
 	}
+
 	void addLast(const Student& x) {
 		Node* node = new Node();
 		node->data = x;
@@ -60,6 +61,7 @@ public:
 		}
 		return;
 	}
+
 	// Function for adding a new node to list
 	void addNode(Node* a)
 	{
@@ -77,10 +79,12 @@ public:
 			tail = node;
 		}
 	}
+
 	bool isEmptyList()
 	{
 		return head == NULL;
 	}	
+
 	// Function for removing first node
 	void removeFirst()
 	{
@@ -93,6 +97,7 @@ public:
 		}
 		return;
 	}
+
 	// Function for removing last node
 	void removeLast()
 	{
@@ -118,6 +123,7 @@ public:
 			}
 		}
 	}
+
 	// Function for getting previous node
 	Node* getPreviousNode(Node* node)
 	{
@@ -129,11 +135,13 @@ public:
 		}
 		return NULL;
 	}
+
 	void initListStudent()
 	{
 		head = NULL;
 		tail = NULL;
 	}
+
 	// Function for adding a new student
 	void addStudent()
 	{
@@ -168,8 +176,8 @@ public:
 		//cout << "Input studenn's roomID: "; getline(cin, roomID); s.roomID = roomID;
 		addLast(s);
 	}
-	// Fuunction for searching a student by using ID
-	Node* searchStudent(string id)
+
+	Node* searchNode(string id)
 	{
 		if (head == NULL) return NULL;
 		Node* node = head;
@@ -180,31 +188,41 @@ public:
 		}
 		return node;
 	}
+
+	// Fuunction for searching a student by using ID and printing on screen
+	void searchStudent(string id)
+	{
+		Node* s = searchNode(id);
+		if (s == NULL) { cout << "Student does not exist !!!\n"; return; }
+		else s->data.printInfo();
+	}
+
 	// Function for deleting a student by seaching student by ID and deleting him
 	void deleteStudent(string id)
 	{
 
-		if (searchStudent(id) == NULL)
+		if (searchNode(id) == NULL)
 		{
 			cout << "Student does not exist in the list !!!\n";
-			cout << "Delete failed !!!";
+			cout << "Delete failed !!!\n";
 		}
+		else if (searchNode(id)->data.status == true) cout << "Student is hiring room. Delete failed !!! \n";
 		else
 		{
-			Node* node = searchStudent(id);
-			if (head == tail) {
+			Node* node = searchNode(id);
+			if (node == head) {
 				removeFirst();
 				cout << "Successfully deleted \n";
 				return;
 			}
-			if (head == tail)
+			if (node == tail)
 			{
 				removeLast();
 				cout << "Successfully deleted \n";
 				return;
 			}
 			Node* pre = getPreviousNode(node);
-			if(pre != NULL)
+			if (pre != NULL)
 				pre->next = node->next;
 			else {
 				pre = node->next;
@@ -214,8 +232,34 @@ public:
 			delete(node);
 			return;
 		}
-
 	}
+
+	void deleteNode(string id)
+	{
+		Node* node = searchNode(id);
+		if (head == tail) {
+			removeFirst();
+			cout << "Successfully deleted \n";
+			return;
+		}
+		if (head == tail)
+		{
+			removeLast();
+			cout << "Successfully deleted \n";
+			return;
+		}
+		Node* pre = getPreviousNode(node);
+		if (pre != NULL)
+			pre->next = node->next;
+		else {
+			pre = node->next;
+			head = pre;
+		}
+		cout << "Successfully deleted \n";
+		delete(node);
+		return;
+	}
+
 	// Function for displaying list student
 	void displayListStudent()
 	{
@@ -224,21 +268,22 @@ public:
 		while (curr != NULL)
 		{
 			i++;
-			cout << i << "\t |";
+			cout<<setw(4) << i << "\t |";
 			curr->data.printInfo();
 			curr = curr->next;
 		}
 	}
+
 	// Function for updating information of student
 	void updateInfo(string id)
 	{
-		if (searchStudent(id) == NULL)
+		if (searchNode(id) == NULL)
 		{
 			cout << "Student does not exist in the list !!!\n";
 			cout << "Update failed\n";
 			return;
 		}
-		Node* p = searchStudent(id);
+		Node* p = searchNode(id);
 		bool flag = true;
 		do
 		{
@@ -356,6 +401,7 @@ public:
 		} while (flag);
 
 	}
+
 	// Function for filtering list student
 	void filterStudent()
 	{
@@ -450,10 +496,12 @@ public:
 			}
 		} while (flag);
 	}
+
 	//Function for using Merge sort to sort list student by first and last name
 	void sortStudent() {
 		mergeSort(head);
 	}
+
 	// Funtion for counting the number of students in the list
 	int countStudent()
 	{
@@ -466,6 +514,7 @@ public:
 		}
 		return dem;
 	}
+
 	int countStudentGender(string gender)
 	{
 		int dem = 0;
@@ -477,6 +526,11 @@ public:
 			curr = curr->next;
 		}
 		return dem;
+	}
+
+	bool isExisting(string id)
+	{
+		if (searchNode(id) == NULL) return true; else return false;
 	}
 };
 

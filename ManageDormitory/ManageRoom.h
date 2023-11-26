@@ -8,26 +8,28 @@ struct ManageRoom
 private:
 	NodeTree* head = NULL;
 	//util print
-	void preOrder(NodeTree* root)
+	void inOrder(NodeTree* root)
 	{
 		if (root != NULL)
 		{
+			
+			inOrder(root->left);
 			root->data.printPhong();
-			preOrder(root->left);
-			preOrder(root->right);
+			inOrder(root->right);
 		}
 		return;
 	}
-	void preOrderEmpty(NodeTree* root)
-	{
+	void inOrderEmpty(NodeTree* root)
+	{		
 		if (root != NULL)
-		{
-			if(root->data.isEmpty())
-				root->data.printPhong();
-			preOrderEmpty(root->left);
-			preOrderEmpty(root->right);
-		}
-		return;
+		{	
+			inOrderEmpty(root->left);
+			if (root->data.isEmpty()) 
+			{
+				root->data.printPhong();						
+			}
+			inOrderEmpty(root->right);
+		}		
 	}
 	void utilFindIdRoomWithStudent(NodeTree* root, string id, int& saveID)
 	{
@@ -52,8 +54,7 @@ private:
 			UtilprintStudentInRoom(root->right);
 		}
 		return;
-	}
-		
+	}		
 	// cân bằng nếu bên trái thừa
 	NodeTree* rightRotate(NodeTree* y)
 	{
@@ -307,7 +308,6 @@ private:
 		}
 		return;
 	}
-
 public:
 	ManageRoom() {}
 	ManageRoom(Room a)
@@ -319,47 +319,45 @@ public:
 		p->height = 1;
 		head = p;
 	}
-	void readfile(const char fname[])
-	{
-		ifstream file;
-		int ok;
-		file.open(fname);
-		if (!file) {
-			cerr << "Error: file not opened." << endl;
-			return;
-		}
-
-		//Node* q = head;
-		while (!file.eof())
-		{
-			string id;
-			string type;
-			string beds;
-			string capacity;
-			string cost;
-			//xoa utf neu neu can
-			//if (i == 0)
-			//{
-			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
-			//}
-			getline(file, id, ',');
-			getline(file, type, ',');
-			getline(file, beds, ',');
-			getline(file, capacity, ',');
-			getline(file, cost, '\n');
-
-			Room a(stoi(id), type, stoi(beds), stoi(capacity), stod(cost) * 1.0);
-			InsertRoom(a);
-		}
-		file.close();
-	}
+	//void readfile(const char fname[])
+	//{
+	//	ifstream file;
+	//	int ok;
+	//	file.open(fname);
+	//	if (!file) {
+	//		cerr << "Error: file not opened." << endl;
+	//		return;
+	//	}
+	//	//Node* q = head;
+	//	while (!file.eof())
+	//	{
+	//		string id;
+	//		string type;
+	//		string beds;
+	//		string capacity;
+	//		string cost;
+	//		//xoa utf neu neu can
+	//		//if (i == 0)
+	//		//{
+	//		//	a.id.erase(a.id.begin(), a.id.begin() + 3);
+	//		//}
+	//		getline(file, id, ',');
+	//		getline(file, type, ',');
+	//		getline(file, beds, ',');
+	//		getline(file, capacity, ',');
+	//		getline(file, cost, '\n');
+	//		Room a(stoi(id), type, stoi(beds), stoi(capacity), stod(cost) * 1.0);
+	//		InsertRoom(a);
+	//	}
+	//	file.close();
+	//}
 	void InsertRoom(Room a)
 	{
 		head = insert(head, a);
 	}
 	void printListRoom()
 	{
-		preOrder(head);
+		inOrder(head);
 	}
 	NodeTree* findRoom(int id)
 	{
@@ -384,6 +382,7 @@ public:
 	void automaticallyAddRoom(ManageStudent &liststudent)
 	{
 		UtilautomaticallyAddRoom(head, liststudent);
+		cout << "Added successfully !!!\n";
 		return;
 	}
 	void printStudentInRoom()
@@ -391,23 +390,17 @@ public:
 		UtilprintStudentInRoom(head);
 		return;
 	}
-	void printRoomEmpty()
-	{
-
-	}
-	void suggestRoom(Student a)
+	int suggestRoom(Student a)
 	{
 		float score = -1;
 		int id(-1);
-		UtilSuggestRoom(head, a,score,id);
-		cout << id<<": "<< score;
-		return;
+		UtilSuggestRoom(head, a,score,id);		
+		return id;
 	}
 	// in danh sách các phòng đang còn chỗ trống
 	void printListEmptyRoom()
-	{
-		cout << "==========================empty room===============================================\n";
-		preOrderEmpty(head);
+	{		
+		inOrderEmpty(head);
 		return;
 	}
 	void hiringRoom()
@@ -427,7 +420,7 @@ public:
 			int idRoom;
 			cin >> idRoom;
 			NodeTree* q = findRoom(idRoom);
-			if (q->data.People - q->data.list.countStudent() != 0)
+			if (q->data.Capacity - q->data.list.countStudent() != 0)
 			{
 				p->data.deleteStudent(id);
 				q->data.addStudent(sv);
@@ -458,5 +451,70 @@ public:
 		else cout << "couldn't find it\n";
 		return;
 	}
+	void updateRomInfo(int id)
+	{
+		if (findRoom(id) == NULL)
+		{
+			cout << "Room does not exist in the list !!!\n Update failed \n";
+			return;
+		}
+		NodeTree* p = findRoom(id);
+		bool flag = true;
+		do
+		{
+			cout << "\n";
+			cout << "*********************** Update **************************\n";
+			cout << "Select type of information that you want to update: \n";
+			cout << "1. Room ID \n";
+			cout << "2. Numnber of Bed \n";
+			cout << "3. Capacity \n";
+			cout << "4. Cost\n";
+			cout << "0. Exit !!! \n";
+			int n;
+			cout << "Enter: ";
+			cin >> n;
+			switch (n)
+			{
+			case 0:
+			{
+				flag = false;
+				break;
+			}
+			case 1:
+			{
+				cout << "Update new Room ID: ";
+				int n;
+				cin >> n;
+				p->data.RoomID = n;
+				break;
+			}
+			case 2:
+			{
+				cout << "Update the number of bed: ";
+				int n;
+				cin >> n;
+				p->data.NumberOfBed = n;
+				break;
+			}
+			case 3:
+			{
+				cout << "Update the capacity of room: ";
+				int n;
+				cin >> n;
+				p->data.Capacity = n;
+				break;
+			}
+			case 4:
+			{
+				cout << "Update the cost: ";
+				double n;
+				cin >> n;
+				p->data.NumberOfBed = n;
+				break;
+			}
+			}
+		} while (flag);
+	}
+
 };
 

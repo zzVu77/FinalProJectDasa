@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include<iomanip>
 using namespace std;
 struct Student
 {
@@ -14,32 +15,48 @@ struct Student
 	string major;
 	string falcuty;
 	string enterDate;
-//	string roomID;
+	int roomID;
 	string exitDate;
 	bool status;
 
 	void printInfo()
 	{
+		
 		string s = "";
 		if (status == true)
 		{
 			s = "Hiring";
-			cout << studentID << "\t " << lastName << " " << middleName << " " << firstName << "\t " << dob << "\t " << gender << "\t "
-				<< address << "\t " << phoneNo << "\t " << falcuty << "\t " << major << "\t "
-				<< enterDate << "\t " /* << roomID << "\t "*/ << s << "\n";
+			cout << studentID << setw(10) << lastName << " " << middleName << " " << firstName << setw(15)
+				<< dob << setw(10) <<
+				gender << setw(18)
+				<< address << setw(14)
+				<< phoneNo << setw(12) <<
+				falcuty << setw(16) <<
+				major << setw(17)
+				<< enterDate << setw(12)
+				<< roomID << setw(16)
+				<< s << "\n";
 		}
 		else
 		{
-			s = "Ended";
-			cout << studentID << "\t " << lastName << " " << middleName << " " << firstName << "\t " << dob << "\t " << gender << "\t "
-				<< address << "\t " << phoneNo << "\t " << falcuty << "\t " << major << "\t "
-				<< enterDate << "\t " /* << roomID << "\t "*/ << s << "\t " << exitDate << "\n";
+			s = "Check-out";
+			cout << studentID << setw(10) << lastName << " " << middleName << " " << firstName << setw(15)
+				<< dob << setw(10) <<
+				gender << setw(18)
+				<< address << setw(14)
+				<< phoneNo << setw(12) <<
+				falcuty << setw(16) <<
+				major << setw(17)
+				<< enterDate << setw(12)
+				<< roomID << setw(16)
+				<< s << "\n";
 		}
 	}
 	void createStudent()
 	{
 		cin.ignore();
 		Student s;
+		cout << setw(0);
 		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
 		cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
 		cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
@@ -64,8 +81,8 @@ struct Student
 		this->major = major;
 		this->enterDate = enterDate;
 //		this->enterDate = enterDate;
-//		this->roomID = roomID;
-		this->status = true;
+		//this->roomID = roomID;
+		this->status = false;
 	}
 
 	Student() {}

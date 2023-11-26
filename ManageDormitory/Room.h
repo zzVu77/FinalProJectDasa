@@ -3,6 +3,7 @@
 #include <cmath>
 #include <string>
 #include <iostream>
+#include<iomanip>
 using namespace std;
 float convertAddress(string address)
 {
@@ -153,33 +154,34 @@ float convertMajor(string major)
 struct Room
 {
 public:
-	int RoomID=-1;
-	string TypeRoom;
+	int RoomID = -1;
+	//string TypeRoom;
 	int NumberOfBed;
-	int People;
+	int Capacity;
 	double Cost;
 	int empty;
-	ManageStudent list;	 	
+	ManageStudent list;
 	float similarity(Student a, Student b)
 	{
 		float x1 = convertAddress(a.address), x2 = convertMajor(a.major), y1(convertAddress(b.address)), y2(convertMajor(b.major));
 		return (x1 * y1 + x2 * y2) / (sqrt(x1 * x1 + x2 * x2) * sqrt(y1 * y1 + y2 * y2));
 	}
 public:
-	Room(int idRoom, string typeRoom, int numberOfBed, int people, double cost)
+	Room(int idRoom, /*string typeRoom, */int numberOfBed, int people, double cost)
 	{
 		this->RoomID = idRoom;
-		this->TypeRoom = typeRoom;
+		//this->TypeRoom = typeRoom;
 		this->NumberOfBed = numberOfBed;
-		this->People = people;
-		this->Cost = cost;	
+		this->Capacity = people;
+		this->Cost = cost;
 		this->list.initListStudent();
-		this->empty = this->People;		
+		this->empty = this->Capacity;
 	}
-	Room(){}
+	Room() {}
 	void printPhong() {
-		
-		cout <<"ID Room: " << RoomID << "\tType: " << TypeRoom << "\tNumber Of Bed : " << NumberOfBed << "\tMax people: " << People <<"\tEmpty: "<<empty << "\tCost: " << Cost << '\n';
+		cout << setw(0);
+
+		cout << "ID Room: " << RoomID <</* "\tType: " << TypeRoom <<*/ "\tNumber Of Bed : " << NumberOfBed << "\tCapacity: " << Capacity << "\tEmpty: " << empty << "\tCost: " << Cost << '\n';
 		return;
 	}
 	int getID()
@@ -188,15 +190,16 @@ public:
 	}
 	void editRoom()
 	{
-		cout << "ID: ";
+		cout << setw(0);
+		cout << "Input Room ID: ";
 		cin >> RoomID;
-		cout << "Type: ";
-		cin >> TypeRoom;
-		cout << "Number Of Bed: ";
+		/*cout << "Type: ";
+		cin >> TypeRoom;*/
+		cout << "Input Number Of Bed: ";
 		cin >> NumberOfBed;
-		cout << "People: ";
-		cin >> People;
-		cout << "Cost: ";
+		cout << "Input capacity: ";
+		cin >> Capacity;
+		cout << "Input cost: ";
 		cin >> Cost;
 		return;
 	}
@@ -204,113 +207,130 @@ public:
 	{
 		return a.getID() == RoomID;
 	}
-	void addToList()
-	{
-		Student s;
-		s.createStudent();		
-		//s.roomID = this->RoomID;
-		s.status = true;
-		this->list.addLast(s);
-		this->empty = this->empty -1;
-		
+	void addToList(Student s)
+	{	
+		/*if (this->list.isExisting(s.studentID) == true)
+		{
+			cout << "Student already exists in this list\n ";
+		}*/
+		if (this->empty > 0)
+		{
+			s.status = true;
+			this->list.addLast(s);
+			this->empty = this->empty - 1;
+			cout << setw(0);
+			s.roomID = this->RoomID;
+			cout << "Added successfully\n";
+		}
+		else cout << "The room is full !!!\n";
+
 	}
 	void printListStudent()
 	{
 		list.displayListStudent();
-		cout << "========================================================================\n";
+		//cout << "========================================================================\n";
 		return;
 	}
 	void automaticallyAddStudent(ManageStudent& liststudent)
 	{
 		//ManageStudent liststudent = listS;
 
-		if (liststudent.head == NULL)
-			return;
-		else {
-			if (list.countStudent() == 0)
+
+		if (list.countStudent() == 0)
+		{
+			Node* first = liststudent.head;
+			while (first != NULL and first->data.status != false)
 			{
-				Student curr = liststudent.head->data;
-				float max(-99999);
-				int numberOfGender(liststudent.countStudentGender(curr.gender));
-				list.addLast(curr);
+				first = first->next;
+			}
+			if (first == NULL) return;
+			float max(-99999);
+			first->data.status = true;
+			first->data.roomID = this->RoomID;
+			Student curr = first->data;
+			int numberOfGender(liststudent.countStudentGender(curr.gender));
+			list.addLast(curr);
+			this->empty--;
+			// tìm ra sv phù hợp, add vào list sv của room, xóa khởi list đầu vào
+			while (list.countStudent() != Capacity and liststudent.head != NULL and numberOfGender != list.countStudent())
+			{
+				max = -99999;
+				Node* p = liststudent.head;
+
+				while (p != NULL and max != 1)
+				{
+					if (curr.gender == p->data.gender and p->data.status == false)
+					{
+						if (max < similarity(curr, p->data)) {
+							max = similarity(curr, p->data);
+						}
+					}
+					p = p->next;
+				}
+
+				Node* p1 = liststudent.head;
+				while ((p1->next != NULL and similarity(curr, p1->data) != max) or (p1->next != NULL and curr.gender != p1->data.gender) or (p1->next != NULL and p1->data.status == true))
+				{
+					p1 = p1->next;
+				}
+
 				this->empty--;
-				liststudent.deleteStudent(curr.studentID);
-				// tìm ra sv phù hợp, add vào list sv của room, xóa khởi list đầu vào
-				while (list.countStudent() != People and liststudent.head != NULL and numberOfGender != list.countStudent() )
+				p1->data.roomID = this->RoomID;
+				p1->data.status = true;
+				list.addLast(p1->data);
+			}
+			return;
+		}
+		else {
+			float max = 0;
+			// tìm ra sv phù hợp so với sv có sẵn trong list, add vào list sv của room, xóa khởi list đầu vào
+			while (list.countStudent() != Capacity and liststudent.head != NULL)
+			{
+				max = 0;
+				Node* p = liststudent.head;
+				while (p != NULL)
 				{
-					max = -99999;
-					Node* p = liststudent.head;
-					
-					while (p != NULL and max != 1)
+					Node* curr = list.head;
+					float total = 0;
+					if (p->data.gender == curr->data.gender)
 					{
-						if (curr.gender == p->data.gender)
+						while (curr != NULL)
 						{
-							if (max < similarity(curr, p->data)) {
-								max = similarity(curr, p->data);
-							}
+							total += similarity(curr->data, p->data);
+							curr = curr->next;
 						}
-						p = p->next;
+						if (total >= max) {
+							max = total;
+						}
 					}
-					
-					Node* p1 = liststudent.head;
-					while ((p1 != NULL and similarity(curr, p1->data) != max) or (p1 != NULL and curr.gender !=p1->data.gender) )
+					p = p->next;
+				}
+				Node* p1 = liststudent.head;
+				float sumScore(0);
+				while (p1 != NULL)
+				{
+					sumScore = 0;
+					Node* curr1 = list.head;
+					if (p1->data.gender == curr1->data.gender)
 					{
+						while (curr1 != NULL)
+						{
+							sumScore += similarity(curr1->data, p1->data);
+							curr1 = curr1->next;
+						}
+					}
+					if (sumScore != max)
 						p1 = p1->next;
-					}
-					list.addLast(p1->data);
-					this->empty--;
-					liststudent.deleteStudent(p1->data.studentID);
+					else break;
 				}
-				return;
+				this->empty--;
+				p1->data.roomID = this->RoomID;
+				p1->data.status = true;
+				list.addLast(p1->data);
+
+
 			}
-			else {
-				float max = 0;
-				// tìm ra sv phù hợp so với sv có sẵn trong list, add vào list sv của room, xóa khởi list đầu vào
-				while (list.countStudent() != People and liststudent.head != NULL)
-				{
-					max = 0;
-					Node* p = liststudent.head;
-					while (p != NULL)
-					{
-						Node* curr = list.head;
-						float total = 0;
-						if (p->data.gender == curr->data.gender)
-						{
-							while (curr != NULL)
-							{
-								total += similarity(curr->data, p->data);
-								curr = curr->next;
-							}
-							if (total >= max) {
-								max = total;
-							}
-						}
-						p = p->next;
-					}
-					Node* p1 = liststudent.head;
-					float sumScore(0);
-					while (p1 != NULL)
-					{
-						sumScore = 0;
-						Node* curr1 = list.head;
-						if (p1->data.gender == curr1->data.gender)
-						{
-							while (curr1 != NULL)
-							{
-								sumScore += similarity(curr1->data, p1->data);
-								curr1 = curr1->next;
-							}
-						}
-						if (sumScore != max)
-							p1 = p1->next;
-						else break;
-					}
-					list.addLast(p1->data);
-					this->empty--;
-					liststudent.deleteStudent(p1->data.studentID);
-				}
-				return;
-			}
+			return;
 		}
 	}
 	void addStudent(const Student a)
@@ -323,38 +343,39 @@ public:
 	{
 		Node* p = list.head;
 		float total(0);
-		while (p != NULL and list.countStudent() != People)
+		while (p != NULL and list.countStudent() != Capacity)
 		{
 			total += similarity(a, p->data);
 			p = p->next;
 		}
-		return total / list.countStudent()*1.0;
+		return total / list.countStudent() * 1.0;
 	}
 	void deleteStudent(string id)
 	{
 		list.deleteStudent(id);
+		empty++;
 		return;
 	}
 	bool checkStudentInRoom(string id)
 	{
-		if (list.searchStudent(id) == NULL)
+		if (list.searchNode(id) == NULL)
 			return false;
 		else return true;
 	}
 	Student getStudent(string id)
 	{
 		Student a;
-		Node* p = list.searchStudent(id);
+		Node* p = list.searchNode(id);
 		a = p->data;
 		return a;
 	}
 	bool isEmpty()
 	{
-		if ((list.countStudent()- People) == 0)
+		if ((list.countStudent() - Capacity) == 0)
 			return false;
 		return true;
 	}
-	~Room(){}
+	~Room() {}
 };
 
 
