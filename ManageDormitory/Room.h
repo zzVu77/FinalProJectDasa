@@ -208,11 +208,22 @@ public:
 		return a.getID() == RoomID;
 	}
 	void addToList(Student& s)
-	{	
+	{
 		/*if (this->list.isExisting(s.studentID) == true)
 		{
 			cout << "Student already exists in this list\n ";
 		}*/
+		if (list.countStudentGender("Nu") > 0 and s.gender == "Nam")
+		{
+			cout << "This room is for female. Added failed !\n";
+			return;
+		}
+		else
+			if (list.countStudentGender("Nam") > 0 and s.gender == "Nu")
+			{
+				cout << "This room is for male. Added failed !\n";
+				return;
+			}
 		if (this->empty > 0)
 		{
 			s.roomID = this->RoomID;
@@ -220,7 +231,7 @@ public:
 			this->list.addLast(s);
 			this->empty = this->empty - 1;
 			cout << setw(0);
-			
+
 			cout << "Added successfully\n";
 		}
 		else cout << "The room is full !!!\n";
@@ -354,7 +365,7 @@ public:
 	void deleteStudent(string id)
 	{
 		list.deleteStudent(id);
-		this->empty = Capacity-list.countStudent()  ;
+		this->empty = Capacity - list.countStudent();
 		return;
 	}
 	bool checkStudentInRoom(string id)
