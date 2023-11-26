@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChuanHoa.h" />
     <ClInclude Include="ConsoleUI.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Node.h" />

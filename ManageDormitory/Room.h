@@ -207,7 +207,7 @@ public:
 	{
 		return a.getID() == RoomID;
 	}
-	void addToList(Student s)
+	void addToList(Student& s)
 	{	
 		/*if (this->list.isExisting(s.studentID) == true)
 		{
@@ -215,11 +215,12 @@ public:
 		}*/
 		if (this->empty > 0)
 		{
+			s.roomID = this->RoomID;
 			s.status = true;
 			this->list.addLast(s);
 			this->empty = this->empty - 1;
 			cout << setw(0);
-			s.roomID = this->RoomID;
+			
 			cout << "Added successfully\n";
 		}
 		else cout << "The room is full !!!\n";
@@ -353,7 +354,7 @@ public:
 	void deleteStudent(string id)
 	{
 		list.deleteStudent(id);
-		empty++;
+		this->empty = Capacity-list.countStudent()  ;
 		return;
 	}
 	bool checkStudentInRoom(string id)

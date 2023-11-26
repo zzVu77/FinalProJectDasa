@@ -53,5 +53,8 @@
     <ClInclude Include="ConsoleUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ChuanHoa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

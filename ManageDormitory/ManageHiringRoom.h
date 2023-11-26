@@ -27,7 +27,7 @@ struct ManageHiringRoom {
 		cin.ignore();
 		Student s;
 		cout << setw(0);
-		cout<<"Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
+		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
 		if (MS.isExisting(s.studentID) == true)
 		{
 			cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
@@ -132,9 +132,9 @@ struct ManageHiringRoom {
 		{
 			Node* a = MS.searchNode(sID);
 			a->data.status = false;
-			Room b = MR.findRoom(MS.searchNode(sID)->data.roomID)->data;
-			b.list.searchNode(sID)->data.status = false;
-			b.deleteStudent(sID);
+			MR.findRoom(MS.searchNode(sID)->data.roomID)->data.list.searchNode(sID)->data.status = false;
+			//b.list.searchNode(sID)->data.status = false;
+			MR.findRoom(MS.searchNode(sID)->data.roomID)->data.deleteStudent(sID);
 			a->data.roomID = -999;
 		}
 	}
@@ -142,7 +142,7 @@ struct ManageHiringRoom {
 	{
 		cin.ignore();
 		string studentID;
-		cout  << "Input studenn's ID: "; getline(cin, studentID);
+		cout << "Input studenn's ID: "; getline(cin, studentID);
 		Node* temp = MS.searchNode(studentID);
 		if (temp == NULL)
 		{
