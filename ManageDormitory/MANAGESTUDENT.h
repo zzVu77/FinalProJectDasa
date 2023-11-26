@@ -3,6 +3,7 @@
 #include"Node.h"
 #include"Sort.h"
 #include"Date.h"
+#include"ChuanHoa.h"
 #include <fstream>
 using namespace std;
 struct ManageStudent
@@ -300,7 +301,12 @@ public:
 			cout << "8. Student's falcuty\n";
 			cout << "0. Exit\n";
 			cout << "*********************************************************\n";
-			int n; cout << "Input: "; cin >> n;
+
+			string strCheck;
+			do {
+				cout << "Input: "; cin >> strCheck;
+			} while (!checkSo(strCheck));
+			int n = stoi(strCheck);
 			switch (n)
 			{
 			case 0:
@@ -419,7 +425,11 @@ public:
 //			cout << "6. Student's roomID:\n";
 			cout << "0. Exit\n";
 			cout << "*********************************************************\n";
-			int n; cout << "Input: "; cin >> n;
+			string strCheck;
+			do {
+				cout << "Input: "; cin >> strCheck;
+			} while (!checkSo(strCheck));
+			int n = stoi(strCheck);
 			switch (n)
 			{
 			case 1:

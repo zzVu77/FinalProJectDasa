@@ -5,6 +5,7 @@
 #include"ManageRoom.h"
 #include"ManageHiringRoom.h"
 #include"Date.h"
+#include"ChuanHoa.h"
 #include<iomanip>
 using namespace std;
 
@@ -35,9 +36,11 @@ void doMenuForManageStudent(ManageStudent& MS)
 	do
 	{
 		printMenuForManageStudent();
-		cout << "Enter: ";
-		int input;
-		cin >> input;
+		string strCheck;
+		do {
+			cout << "Enter: "; cin >> strCheck;
+		} while (!checkSo(strCheck));
+		int input = stoi(strCheck);
 		switch (input)
 		{
 		case 0:
@@ -120,9 +123,11 @@ void doMenuForManageRoom(ManageRoom& MR)
 	do
 	{
 		printMenuForManageRoom();
-		cout << "Enter: " << setw(40);
-		int input;
-		cin >> input;
+		string strCheck;
+		do {
+			cout << "Enter: "; cin >> strCheck;
+		} while (!checkSo(strCheck));
+		int input = stoi(strCheck);
 		switch (input)
 		{
 		case 0:
@@ -224,9 +229,11 @@ void doMenuForManageHiringRoom(ManageHiringRoom& MHR)
 	do
 	{
 		printMenuForManageHiringRoom();
-		cout << "Enter: " << setw(40);
-		int input;
-		cin >> input;
+		string strCheck;
+		do {
+			cout << "Enter: "; cin >> strCheck;
+		} while (!checkSo(strCheck));
+		int input = stoi(strCheck);
 		switch (input)
 		{
 		case 0:
@@ -244,7 +251,11 @@ void doMenuForManageHiringRoom(ManageHiringRoom& MHR)
 				cout << "| 2. Old Student \t \t \t | \n";
 				cout << "| 0. Exit !!! \t \t \t \t | \n";
 				cout << "------------------------------------------\n";
-				int n; cout << "Enter: "; cin >> n;
+				string strCheck;
+				do {
+					cout << "Enter: "; cin >> strCheck;
+				} while (!checkSo(strCheck));
+				int n = stoi(strCheck);
 				switch (n)
 				{
 				case 0:
@@ -334,9 +345,11 @@ void doMenu()
 	do
 	{
 		printMenuForManageDormitory();
-		cout << "Enter: " << setw(40);
-		int input;
-		cin >> input;
+		string strCheck;
+		do {
+			cout << "Enter: "; cin >> strCheck;
+		} while (!checkSo(strCheck));
+		int input = stoi(strCheck);
 		switch (input)
 		{
 		case 0:
