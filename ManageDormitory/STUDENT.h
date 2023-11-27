@@ -15,7 +15,7 @@ struct Student
 	string major;
 	string falcuty;
 	string enterDate;
-	int roomID;
+	int roomID=0;
 	string exitDate;
 	bool status;
 

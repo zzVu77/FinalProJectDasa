@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include<iomanip>
+#include"Date.h"
 using namespace std;
 float convertAddress(string address)
 {
@@ -160,6 +161,8 @@ public:
 	int Capacity;
 	double Cost;
 	int empty;
+	double electricityBill=0;
+	double waterBill=0;
 	ManageStudent list;
 	float similarity(Student a, Student b)
 	{
@@ -386,6 +389,32 @@ public:
 		if ((list.countStudent() - Capacity) == 0)
 			return false;
 		return true;
+	}
+	void inputElectricityBill()
+	{
+		double x;
+		cout << setw(0) << "Enter electricity bill: ";
+		cin >> x;
+		this->electricityBill = x;
+	}
+	void inputWaterBill()
+	{
+		double x;
+		cout << setw(0) << "Enter water bill: ";
+		cin >> x;
+		this->waterBill = x;
+	}
+	double calculateRoomBill()
+	{
+		return this->Cost + this->electricityBill + this->waterBill;
+	}
+	void printRoomBill()
+	{
+		cout <<setw(0)<< "============== Room " << this->RoomID << " ============== " << endl;
+		cout << setw(0) << "Electricity bill: " << this->electricityBill << endl;;
+		cout << setw(0) << "Water bill: " << this->waterBill<<endl;
+		cout << setw(0) << "Sum: " << calculateRoomBill() << endl;;
+		cout << "====================================\n" << endl;
 	}
 	~Room() {}
 };

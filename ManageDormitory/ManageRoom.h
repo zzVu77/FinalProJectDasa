@@ -19,6 +19,16 @@ private:
 		}
 		return;
 	}
+	void inOrderRoomBill(NodeTree* root)
+	{
+		if (root != NULL)
+		{
+			inOrderRoomBill(root->left);
+			root->data.printRoomBill();
+			inOrderRoomBill(root->right);
+		}
+		return;
+	}
 	void inOrderEmpty(NodeTree* root)
 	{		
 		if (root != NULL)
@@ -514,6 +524,10 @@ public:
 			}
 			}
 		} while (flag);
+	}
+	void printRoomBill()
+	{
+		inOrderRoomBill(head);
 	}
 
 };

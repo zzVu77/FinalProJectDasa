@@ -1,7 +1,7 @@
 ﻿  main.cpp
-E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\Room.h(73,14): warning C4305: 'return': truncation from 'double' to 'float'
-E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\Room.h(123,14): warning C4305: 'return': truncation from 'double' to 'float'
-E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\Room.h(363,38): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\ManageRoom.h(512,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(78,7): warning C4101: 'rID': unreferenced local variable
+E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\Room.h(74,14): warning C4305: 'return': truncation from 'double' to 'float'
+E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\Room.h(124,14): warning C4305: 'return': truncation from 'double' to 'float'
+E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\Room.h(366,38): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\ManageRoom.h(522,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(77,7): warning C4101: 'rID': unreferenced local variable
   ManageDormitory.vcxproj -> E:\HCM_UTE\Semester 3\DASA\CloneProject\FinalProJectDasa\x64\Debug\ManageDormitory.exe

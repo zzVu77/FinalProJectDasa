@@ -108,7 +108,8 @@ void printMenuForManageRoom()
 	cout << "| 3. Delete Room \t \t \t \t \t | \n";
 	cout << "| 4. Display List Student In Room \t \t \t | \n";
 	cout << "| 5. Display List Room \t \t \t \t \t | \n";
-	cout << "| 6. Enter electricity and water bills \t \t \t | \n";
+	cout << "| 6. Enter electricity and water bill \t \t \t | \n";
+	cout << "| 7. Print Rooms Bill \t \t \t \t \t | \n";
 	cout << "| 0. Exit !!! \t \t \t \t \t \t | \n";
 	cout << "----------------------------------------------------------\n";
 	// Còn chức năng nhập tiền điện nước hằng tháng cho từng phòng và tính tổng tiền điện nước
@@ -204,6 +205,21 @@ void doMenuForManageRoom(ManageRoom& MR)
 		case 5:
 		{
 			MR.printListRoom();
+		}
+		case 6:
+		{
+			int id;
+			cout << setw(0) << "Enter Room ID: ";
+			cin >> id;
+			NodeTree* p = MR.findRoom(id);
+			p->data.inputElectricityBill();
+			p->data.inputWaterBill();
+			break;
+		}
+		case 7:
+		{
+			MR.printRoomBill();
+			break;
 		}
 		}
 	} while (flag);

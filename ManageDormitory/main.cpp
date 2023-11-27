@@ -53,6 +53,7 @@ int main()
 	//MR.printStudentInRoom();
 	//b12.printListStudent();
 	doMenu();
+	//cout << getCurrentMonth();
 	// 
 //	ManageStudent MS;
 ////

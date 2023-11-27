@@ -35,6 +35,7 @@ bool checkDate(string date)
 	auto now = std::chrono::system_clock::now();
 	std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
 	std::tm localTime;
+	
 	localtime_s(&localTime, &currentTime);
 	int day = localTime.tm_mday;
 	int month = localTime.tm_mon + 1;  // Month start at 0
@@ -47,4 +48,16 @@ bool checkDate(string date)
 	if ((parsedDate.month == 4 or parsedDate.month == 6 or parsedDate.month == 9 or parsedDate.month == 11) and parsedDate.day > 30) return false;
 	return true;
 }
+int getCurrentMonth()
+{
+	// Get date now
+	auto now = std::chrono::system_clock::now();
+	std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+	std::tm localTime;
 
+	localtime_s(&localTime, &currentTime);
+	int day = localTime.tm_mday;
+	int month = localTime.tm_mon + 1;  // Month start at 0
+	int year = localTime.tm_year + 1900;  // Year from 1900
+	return month;
+}

@@ -28,8 +28,7 @@ struct ManageHiringRoom {
 		Student s;
 		cout << setw(0);
 		cout << "Input studenn's ID: "; getline(cin, studentID); s.studentID = studentID;
-		if (MS.isExisting(s.studentID) == true)
-		{
+		if (MS.isExisting(s.studentID) == true){
 			cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
 			cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
 			cout << "Input studenn's first name: "; getline(cin, firstName); s.lastName = firstName;
