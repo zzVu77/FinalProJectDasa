@@ -330,13 +330,13 @@ private:
 		}
 		return;
 	}
-	void utilWriteFile(const char fname[],NodeTree* root)
+	void utilWriteFile(ofstream& saved,NodeTree* root)
 	{
 		if (root != NULL)
 		{	
-			root->data.writeFile(fname);
-			utilWriteFile(fname,root->left);
-			utilWriteFile(fname, root->right);
+			root->data.writeFile(saved);
+			utilWriteFile(saved,root->left);
+			utilWriteFile(saved, root->right);
 		}
 
 	}
@@ -353,6 +353,7 @@ public:
 	}
 	void readfile(const char fname[])
 	{
+		
 		ifstream file;
 		file.open(fname);
 		if (!file) {
@@ -372,10 +373,13 @@ public:
 			//{
 			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
 			//}
+				
 			getline(file, id, ',');
 			getline(file, beds, ',');
 			getline(file, capacity, ',');
 			getline(file, cost, '\n');
+			if (id=="")
+				break;
 			Room a(stoi(id), stoi(beds), stoi(capacity), stod(cost));
 			InsertRoom(a);
 		}
@@ -383,7 +387,10 @@ public:
 	}
 	void writefile(const char fname[])
 	{
-		utilWriteFile(fname,head);
+		ofstream file;
+		file.open(fname);
+		utilWriteFile(file,head);
+		file.close();
 		return;
 	}
 	void InsertRoom(Room a)

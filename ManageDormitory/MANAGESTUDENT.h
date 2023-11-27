@@ -70,14 +70,18 @@ public:
 		ofstream file;
 		file.open(fname);
 		Node* p = head;
-		while (p != NULL)
+		do
 		{
 			file << p->data.studentID << "," << p->data.lastName << "," << p->data.middleName << ","
 				<< p->data.firstName << "," << p->data.dob << "," << p->data.gender << ","
 				<< p->data.address << "," << p->data.phoneNo << "," << p->data.falcuty << ","
 				<< p->data.major << "," << p->data.enterDate <<","<<p->data.roomID<< '\n';
 			p = p->next;
-		}
+		} while (p->next != NULL);
+		file << p->data.studentID << "," << p->data.lastName << "," << p->data.middleName << ","
+			<< p->data.firstName << "," << p->data.dob << "," << p->data.gender << ","
+			<< p->data.address << "," << p->data.phoneNo << "," << p->data.falcuty << ","
+			<< p->data.major << "," << p->data.enterDate << "," << p->data.roomID;
 		file.close();
 		return;
 	}

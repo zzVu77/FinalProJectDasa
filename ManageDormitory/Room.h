@@ -155,7 +155,7 @@ float convertMajor(string major)
 struct Room
 {
 
-	int RoomID = -1;
+	int RoomID;
 	//string TypeRoom;
 	int NumberOfBed;
 	int Capacity;
@@ -417,12 +417,9 @@ public:
 		cout << setw(0) << "Sum: " << calculateRoomBill() << endl;;
 		cout << "----------------------------------\n" << endl;
 	}
-	void writeFile(const char fname[])
+	void writeFile(ofstream& a)
 	{
-		ofstream file;
-		file.open(fname);
-		file <<this->RoomID<<","<<this->NumberOfBed<<","<<this->Capacity<<","<<this->Cost<<'\n';
-		file.close();
+		a << this->RoomID<<","<< this->NumberOfBed << "," << this->Capacity << "," << this->Cost << '\n';
 		return;
 	}
 	~Room() {}
