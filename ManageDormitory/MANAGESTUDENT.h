@@ -12,6 +12,20 @@ struct ManageStudent
 	Node* tail;
 public:	
 	// Function for adding a new node to the last of list
+	void addLast(const Student& x) {
+		Node* node = new Node();
+		node->data = x;
+		node->next = NULL;
+		if (head == NULL) {
+			head = node;
+			tail = node;
+		}
+		else {
+			tail->next = node;
+			tail = node;
+		}
+		return;
+	}
 	void readfile(const char fname[])
 	{
 		ifstream file;
@@ -26,6 +40,7 @@ public:
 		while (!file.eof())
 		{
 			Student a;
+			string roomID;
 			//xoa utf neu neu can
 			//if (i == 0)
 			//{
@@ -41,25 +56,29 @@ public:
 			getline(file, a.phoneNo, ',');
 			getline(file, a.falcuty, ',');
 			getline(file, a.major, ',');
-			getline(file, a.enterDate, '\n');
+			getline(file, a.enterDate, ',');
+			getline(file, roomID, '\n');
+			//getline(file, a.exitDate, '\n');
+			a.roomID = stoi(roomID);
 			addLast(a);
 
 		}
 		file.close();
 	}
-
-	void addLast(const Student& x) {
-		Node* node = new Node();
-		node->data = x;
-		node->next = NULL;
-		if (head == NULL) {
-			head = node;
-			tail = node;
+	void writeFile(const char fname[])
+	{
+		ofstream file;
+		file.open(fname);
+		Node* p = head;
+		while (p != NULL)
+		{
+			file << p->data.studentID << "," << p->data.lastName << "," << p->data.middleName << ","
+				<< p->data.firstName << "," << p->data.dob << "," << p->data.gender << ","
+				<< p->data.address << "," << p->data.phoneNo << "," << p->data.falcuty << ","
+				<< p->data.major << "," << p->data.enterDate <<","<<p->data.roomID<< '\n';
+			p = p->next;
 		}
-		else {
-			tail->next = node;
-			tail = node;
-		}
+		file.close();
 		return;
 	}
 

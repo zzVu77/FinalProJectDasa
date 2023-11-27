@@ -138,7 +138,7 @@ float convertAddress(string address)
 }
 float convertMajor(string major)
 {
-	if (major == "IT")
+	if (major == "Information Technology")
 		return 10;
 	else if (major == "Marketing")
 		return 50;
@@ -154,7 +154,7 @@ float convertMajor(string major)
 }
 struct Room
 {
-public:
+
 	int RoomID = -1;
 	//string TypeRoom;
 	int NumberOfBed;
@@ -170,7 +170,7 @@ public:
 		return (x1 * y1 + x2 * y2) / (sqrt(x1 * x1 + x2 * x2) * sqrt(y1 * y1 + y2 * y2));
 	}
 public:
-	Room(int idRoom, /*string typeRoom, */int numberOfBed, int people, double cost)
+	Room(int idRoom,int numberOfBed, int people, double cost)
 	{
 		this->RoomID = idRoom;
 		//this->TypeRoom = typeRoom;
@@ -178,7 +178,7 @@ public:
 		this->Capacity = people;
 		this->Cost = cost;
 		this->list.initListStudent();
-		this->empty = this->Capacity;
+		this->empty = this->Capacity- this->list.countStudent();
 	}
 	Room() {}
 	void printPhong() {
@@ -416,6 +416,14 @@ public:
 		cout << setw(0) << "Water bill: " << this->waterBill<<endl;
 		cout << setw(0) << "Sum: " << calculateRoomBill() << endl;;
 		cout << "----------------------------------\n" << endl;
+	}
+	void writeFile(const char fname[])
+	{
+		ofstream file;
+		file.open(fname);
+		file <<this->RoomID<<","<<this->NumberOfBed<<","<<this->Capacity<<","<<this->Cost<<'\n';
+		file.close();
+		return;
 	}
 	~Room() {}
 };

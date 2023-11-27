@@ -1,12 +1,12 @@
-22110099,Nguyen,Van,J,24/06/2004,Nu,Da Nang,12345,FIE,IT,30/10/2023
-22110022,Nguyen,Van,E,24/06/2004,Nu,Ha Noi,12345,FIE,IT,30/10/2023
-22110062,Nguyen,Van,I,24/06/2004,Nu,Hue,12345,FIE,IT,30/10/2023
-22110072,Nguyen,Van,D,24/06/2004,Nu,Vung Tau,12345,FIE,IT,30/10/2023
-22110082,Nguyen,Van,B,24/06/2004,Nu,Ho Chi Minh,12345,FIE,Marketing,30/10/2023
-22110012,Nguyen,Van,G,24/06/2004,Nu,Ha Noi,12345,FIE,IT,30/10/2023
-22110052,Nguyen,Van,F,24/06/2004,Nam,Ho Chi Minh,12345,FIE,IT,30/10/2023
-22110032,Nguyen,Van,H,24/06/2004,Nam,Tay Ninh,12345,FIE,Marketing,30/10/2023
-22110042,Nguyen,Van,C,24/06/2004,Nam,Dong Nai,12345,FIE,IT,30/10/2023
-22110023,Nguyen,Van,A,24/06/2004,Nam,Dong Nai,12345,FIE,IT,30/10/2023
-2211028,Nguyen,Van,Z,25/06/2004,Nam,Tay Ninh,12345,FIE,IT,31/10/2023
-2211124,Nguyen,Van,W,25/06/2004,Nam,Binh Dinh,12345,FIE,IT,31/10/2023
+22110034,Nguyen,Van,J,24/06/2004,Nu,Da Nang,12345,FIE,Information Technology,30/10/2023,0
+22110022,Nguyen,Van,E,24/06/2004,Nu,Ha Noi,12345,FIE,Information Technology,30/10/2023,0
+22110062,Nguyen,Van,I,24/06/2004,Nu,Hue,12345,FIE,Information Technology,30/10/2023,0
+22110072,Nguyen,Van,D,24/06/2004,Nu,Vung Tau,12345,FIE,Information Technology,30/10/2023,0
+22110082,Nguyen,Van,B,24/06/2004,Nu,Ho Chi Minh,12345,FIE,Marketing,30/10/2023,0
+22110012,Nguyen,Van,G,24/06/2004,Nu,Ha Noi,12345,FIE,Information Technology,30/10/2023,0
+22110052,Nguyen,Van,F,24/06/2004,Nam,Ho Chi Minh,12345,FIE,Information Technology,30/10/2023,0
+22110032,Nguyen,Van,H,24/06/2004,Nam,Tay Ninh,12345,FIE,Marketing,30/10/2023,0
+22110042,Nguyen,Van,C,24/06/2004,Nam,Dong Nai,12345,FIE,Information Technology,30/10/2023,0
+22110023,Nguyen,Van,A,24/06/2004,Nam,Dong Nai,12345,FIE,Information Technology,30/10/2023,0
+2211028,Nguyen,Van,Z,25/06/2004,Nam,Tay Ninh,12345,FIE,Information Technology,31/10/2023,0
+2211124,Nguyen,Van,W,25/06/2004,Nam,Binh Dinh,12345,FIE,Information Technology,31/10/2023,0

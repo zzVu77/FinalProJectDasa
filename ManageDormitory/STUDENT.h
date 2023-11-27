@@ -72,7 +72,8 @@ struct Student
 		cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
 		cout << "Input studenn's major: "; getline(cin, major); s.major = major;
 	}
-	Student(string studentID, string lastName, string middleName, string firstName, string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate)
+	Student(string studentID, string lastName, string middleName, string firstName,
+		string dob, string gender, string address, string phoneNo, string falcuty, string major, string enterDate)
 	{
 		this->studentID = studentID;
 		this->lastName = lastName;

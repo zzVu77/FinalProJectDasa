@@ -12,7 +12,7 @@ private:
 	{
 		if (root != NULL)
 		{
-			
+
 			inOrder(root->left);
 			root->data.printPhong();
 			inOrder(root->right);
@@ -42,27 +42,27 @@ private:
 		return;
 	}
 	void inOrderEmpty(NodeTree* root)
-	{		
+	{
 		if (root != NULL)
-		{	
+		{
 			inOrderEmpty(root->left);
-			if (root->data.isEmpty()) 
+			if (root->data.isEmpty())
 			{
-				root->data.printPhong();						
+				root->data.printPhong();
 			}
 			inOrderEmpty(root->right);
-		}		
+		}
 	}
 	void utilFindIdRoomWithStudent(NodeTree* root, string id, int& saveID)
 	{
-		if (root != NULL )
+		if (root != NULL)
 		{
 			if (root->data.checkStudentInRoom(id))
 			{
 				saveID = root->data.getID();
 			}
-			utilFindIdRoomWithStudent(root->left,id, saveID);
-			utilFindIdRoomWithStudent(root->right,id, saveID);
+			utilFindIdRoomWithStudent(root->left, id, saveID);
+			utilFindIdRoomWithStudent(root->right, id, saveID);
 		}
 		return;
 	}
@@ -71,12 +71,12 @@ private:
 		if (root != NULL)
 		{
 			UtilprintStudentInRoom(root->left);
-			cout <<"=====================================" << root->data.getID()<<"==================================\n";
+			cout << "=====================================" << root->data.getID() << "==================================\n";
 			root->data.printListStudent();
 			UtilprintStudentInRoom(root->right);
 		}
 		return;
-	}		
+	}
 	// cân bằng nếu bên trái thừa
 	NodeTree* rightRotate(NodeTree* y)
 	{
@@ -85,7 +85,7 @@ private:
 
 		x->right = y;
 		y->left = T2;
-		if(y->left == NULL && y->right == NULL)
+		if (y->left == NULL && y->right == NULL)
 			y->height = 1;
 		else if (y->left == NULL)
 		{
@@ -305,7 +305,7 @@ private:
 		}
 		return root;
 	}
-	void UtilautomaticallyAddRoom(NodeTree* root, ManageStudent &liststudent)
+	void UtilautomaticallyAddRoom(NodeTree* root, ManageStudent& liststudent)
 	{
 		if (root != NULL)
 		{
@@ -315,20 +315,30 @@ private:
 		}
 		return;
 	}
-	void UtilSuggestRoom(NodeTree* root, Student datas, float &saved, int& savedID)
+	void UtilSuggestRoom(NodeTree* root, Student datas, float& saved, int& savedID)
 	{
 		if (root != NULL)
 		{
 			float  p = root->data.scoreSimilarityOfRoom(datas);
-			if (saved <= p and root->data.list.countStudentGender(datas.gender)!=0)
+			if (saved <= p and root->data.list.countStudentGender(datas.gender) != 0)
 			{
 				saved = p;
 				savedID = root->data.getID();
 			}
-			UtilSuggestRoom(root->left, datas,saved,savedID);
-			UtilSuggestRoom(root->right, datas,saved,savedID);
+			UtilSuggestRoom(root->left, datas, saved, savedID);
+			UtilSuggestRoom(root->right, datas, saved, savedID);
 		}
 		return;
+	}
+	void utilWriteFile(const char fname[],NodeTree* root)
+	{
+		if (root != NULL)
+		{	
+			root->data.writeFile(fname);
+			utilWriteFile(fname,root->left);
+			utilWriteFile(fname, root->right);
+		}
+
 	}
 public:
 	ManageRoom() {}
@@ -341,38 +351,41 @@ public:
 		p->height = 1;
 		head = p;
 	}
-	//void readfile(const char fname[])
-	//{
-	//	ifstream file;
-	//	int ok;
-	//	file.open(fname);
-	//	if (!file) {
-	//		cerr << "Error: file not opened." << endl;
-	//		return;
-	//	}
-	//	//Node* q = head;
-	//	while (!file.eof())
-	//	{
-	//		string id;
-	//		string type;
-	//		string beds;
-	//		string capacity;
-	//		string cost;
-	//		//xoa utf neu neu can
-	//		//if (i == 0)
-	//		//{
-	//		//	a.id.erase(a.id.begin(), a.id.begin() + 3);
-	//		//}
-	//		getline(file, id, ',');
-	//		getline(file, type, ',');
-	//		getline(file, beds, ',');
-	//		getline(file, capacity, ',');
-	//		getline(file, cost, '\n');
-	//		Room a(stoi(id), type, stoi(beds), stoi(capacity), stod(cost) * 1.0);
-	//		InsertRoom(a);
-	//	}
-	//	file.close();
-	//}
+	void readfile(const char fname[])
+	{
+		ifstream file;
+		file.open(fname);
+		if (!file) {
+			cerr << "Error: file not opened." << endl;
+			return;
+		}
+		//Node* q = head;
+		while (!file.eof())
+		{
+			string id;
+			string type;
+			string beds;
+			string capacity;
+			string cost;
+			//xoa utf neu neu can
+			//if (i == 0)
+			//{
+			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
+			//}
+			getline(file, id, ',');
+			getline(file, beds, ',');
+			getline(file, capacity, ',');
+			getline(file, cost, '\n');
+			Room a(stoi(id), stoi(beds), stoi(capacity), stod(cost));
+			InsertRoom(a);
+		}
+		file.close();
+	}
+	void writefile(const char fname[])
+	{
+		utilWriteFile(fname,head);
+		return;
+	}
 	void InsertRoom(Room a)
 	{
 		head = insert(head, a);

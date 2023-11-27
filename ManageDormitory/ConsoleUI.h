@@ -317,40 +317,11 @@ void doMenuForManageHiringRoom(ManageHiringRoom& MHR)
 void doMenu()
 {
 	ManageStudent MS;
-	{
-		Student s1("22110099", "Nguyen", "Van", "J", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023");
-		Student s2("22110022", "Nguyen", "Van", "E", "24/06/2004", "Nam", "Ha Noi", "12345", "FIE", "IT", "30/10/2023");
-		Student s3("22110062", "Nguyen", "Van", "I", "24/06/2004", "Nu", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023");
-		Student s4("22110072", "Nguyen", "Van", "D", "24/06/2004", "Nam", "Vung Tau", "12345", "FIE", "IT", "30/10/2023");
-		Student s5("22110082", "Nguyen", "Van", "B", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "Marketing", "30/10/2023");
-		Student s6("22110012", "Nguyen", "Van", "G", "24/06/2004", "Nu", "Ha Noi", "12345", "FIE", "IT", "30/10/2023");
-		Student s7("22110052", "Nguyen", "Van", "F", "24/06/2004", "Nam", "Ho Chi Minh", "12345", "FIE", "IT", "30/10/2023");
-		Student s8("22110032", "Nguyen", "Van", "H", "24/06/2004", "Nam", "Tay Ninh", "12345", "FIE", "Marketing", "30/10/2023");
-		Student s9("22110042", "Nguyen", "Van", "C", "24/06/2004", "Nam", "Vung Tau", "12345", "FIE", "IT", "30/10/2023");
-		Student s10("22110024", "Nguyen", "Van", "A", "24/06/2004", "Nam", "Dong Nai", "12345", "FIE", "IT", "30/10/2023");
-		MS.initListStudent();
-		MS.addLast(s1);
-		MS.addLast(s2);
-		MS.addLast(s3);
-		MS.addLast(s4);
-		MS.addLast(s5);
-		MS.addLast(s6);
-		MS.addLast(s7);
-		MS.addLast(s8);
-		MS.addLast(s9);
-	}
+	MS.initListStudent();
+	MS.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
 	ManageRoom MR;
-	{
-		Room b12(1,/*"normal",*/ 5, 4, 150),
-			b13(2,/* "normal",*/ 5, 2, 180),
-			b14(3, /*"normal",*/ 5, 3, 180),
-			b15(4, /*"normal",*/ 3, 2, 200),
-			b16(5,/* "normal", */2, 2, 210);
-		MR.InsertRoom(b12);
-		MR.InsertRoom(b13);
-		MR.InsertRoom(b14);
-		MR.InsertRoom(b15);
-	}
+
+	MR.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
 	ManageHiringRoom MHR(MR,MS);
 	bool flag = true;
 	do
@@ -385,4 +356,6 @@ void doMenu()
 		}
 		}
 	} while (flag);
+	MR.writefile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
+	MS.writeFile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
 }
