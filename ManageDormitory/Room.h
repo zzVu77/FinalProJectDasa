@@ -410,11 +410,12 @@ public:
 	}
 	void printRoomBill()
 	{
-		cout <<setw(0)<< "============== Room " << this->RoomID << " ============== " << endl;
+		
+		cout <<setw(0)<< "------------- Room " << this->RoomID << " -------------" << endl;
 		cout << setw(0) << "Electricity bill: " << this->electricityBill << endl;;
 		cout << setw(0) << "Water bill: " << this->waterBill<<endl;
 		cout << setw(0) << "Sum: " << calculateRoomBill() << endl;;
-		cout << "====================================\n" << endl;
+		cout << "----------------------------------\n" << endl;
 	}
 	~Room() {}
 };

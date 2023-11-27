@@ -2,6 +2,7 @@
 #include<iostream>
 #include"ManageRoom.h"
 #include"ManageStudent.h"
+#include "Date.h"
 #include <cstring>
 #include <cctype>
 using namespace std;
@@ -32,7 +33,11 @@ struct ManageHiringRoom {
 			cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
 			cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
 			cout << "Input studenn's first name: "; getline(cin, firstName); s.lastName = firstName;
-			cout << "Input studenn's birthday: "; getline(cin, dob); s.dob = dob;
+			string dob;
+			do {
+				cout << "Input studenn's birthday: "; getline(cin, dob);
+			} while (!checkDate(dob));
+			s.dob = dob;
 			cout << "Input studenn's address: "; getline(cin, address); s.address = address;
 			cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
 			cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;

@@ -29,6 +29,18 @@ private:
 		}
 		return;
 	}
+	void inOrderInputBill(NodeTree* root)
+	{
+		if (root != NULL)
+		{
+			inOrderInputBill(root->left);
+			cout << "Room " << root->data.RoomID << endl;
+			root->data.inputElectricityBill();
+			root->data.inputWaterBill();
+			inOrderInputBill(root->right);
+		}
+		return;
+	}
 	void inOrderEmpty(NodeTree* root)
 	{		
 		if (root != NULL)
@@ -527,7 +539,13 @@ public:
 	}
 	void printRoomBill()
 	{
+		cout << setw(0) << "Month: " << getCurrentMonth() << endl;
 		inOrderRoomBill(head);
+	}
+	void inputRomBill()
+	{
+		cout << "Input Room Bill Month " << getCurrentMonth() << endl;
+		inOrderInputBill(head);
 	}
 
 };
