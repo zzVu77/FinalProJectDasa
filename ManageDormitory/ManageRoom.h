@@ -239,7 +239,7 @@ private:
 		return node;
 	}
 	//tìm node trong tree
-	bool ifNodeExists(NodeTree*& node, int key)
+	bool ifNodeExists(NodeTree*& node, int key, NodeTree*& saved,int &savedInt)
 	{
 		if (node == NULL)
 			return false;
@@ -247,15 +247,17 @@ private:
 		{
 			return true;
 		}
-		bool res1 = ifNodeExists(node->left, key);
-		if (res1) {
-			node = node->left;
+		bool res1 = ifNodeExists(node->left, key,saved,savedInt);
+		if (res1 && savedInt !=1) {
+			savedInt = 1;
+			saved = node->left;
 			return true;
 		}
-		bool res2 = ifNodeExists(node->right, key);
-		if (res2)
+		bool res2 = ifNodeExists(node->right, key,saved,savedInt);
+		if (res2 && savedInt != 1)
 		{
-			node = node->right;
+			savedInt = 1;
+			saved = node->right;
 			return true;
 		}
 		return res2;
@@ -402,11 +404,12 @@ public:
 	}
 	NodeTree* findRoom(int id)
 	{
-		NodeTree* p = new NodeTree();
-		p = head;
-		if (ifNodeExists(p, id))
+		NodeTree* p = new NodeTree(), *saved= new NodeTree();
+		p = this->head;
+		int a(0);
+		if (ifNodeExists(p, id, saved,a))
 		{
-			return p;
+			return saved;
 		}
 		else /*cout << "Room does not exist! \n";*/ return NULL;
 	}
@@ -557,7 +560,7 @@ public:
 			}
 			}
 		} while (flag);
-		InsertRoom(p->data);
+		//InsertRoom(p->data);
 	}
 	void printRoomBill()
 	{

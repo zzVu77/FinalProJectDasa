@@ -316,10 +316,10 @@ void doMenu()
 {
 	ManageStudent MS;
 	MS.initListStudent();
-	MS.readfile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/students.txt");
+	MS.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
 	ManageRoom MR;
 
-	MR.readfile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/rooms.txt");
+	MR.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
 	ManageHiringRoom MHR(MR,MS);
 	bool flag = true;
 	do
@@ -328,6 +328,7 @@ void doMenu()
 		string strCheck;
 		do {
 			cout << "Enter: "; cin >> strCheck;
+
 		} while (!checkSo(strCheck));
 		int input = stoi(strCheck);
 		switch (input)
@@ -354,6 +355,6 @@ void doMenu()
 		}
 		}
 	} while (flag);
-	MR.writefile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/students.txt");
-	MS.writeFile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/rooms.txt");
+	MR.writefile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
+	MS.writeFile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
 }
