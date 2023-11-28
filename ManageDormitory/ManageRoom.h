@@ -322,7 +322,7 @@ private:
 		if (root != NULL)
 		{
 			float  p = root->data.scoreSimilarityOfRoom(datas);
-			if ((saved <= p or p==0 )  and root->data.list.countStudentGender(datas.gender) != 0 and root->data.isEmpty())
+			if (((saved <= p)  and root->data.list.countStudentGender(datas.gender) != 0 and root->data.isEmpty()) or p==0)
 			{
 				saved = p;
 				savedID = root->data.getID();

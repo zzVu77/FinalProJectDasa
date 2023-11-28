@@ -164,7 +164,7 @@ struct Room
 	double electricityBill=0;
 	double waterBill=0;
 	ManageStudent list;
-	float similarity(Student a, Student b)
+	double similarity(Student a, Student b)
 	{
 		float x1 = convertAddress(a.address), x2 = convertMajor(a.major), y1(convertAddress(b.address)), y2(convertMajor(b.major));
 		return (x1 * y1 + x2 * y2) / (sqrt(x1 * x1 + x2 * x2) * sqrt(y1 * y1 + y2 * y2));
@@ -368,6 +368,7 @@ public:
 	{
 		Node* p = list.head;
 		float total(0);
+		if (list.countStudent() == 0) return 0;
 		while (p != NULL and list.countStudent() != Capacity)
 		{
 			total += similarity(a, p->data);

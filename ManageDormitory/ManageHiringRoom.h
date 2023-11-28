@@ -43,17 +43,18 @@ struct ManageHiringRoom {
 			cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
 			cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
 			cout << "Input studenn's major: "; getline(cin, major); s.major = major;
-			if (MR.suggestRoom(s) != -1)
+			float scoreID(MR.suggestRoom(s));
+			if (scoreID != -1)
 			{
 
-				cout << "After analysing, the room " << MR.suggestRoom(s) << " is suitable for you\n";
-				MR.findRoom(MR.suggestRoom(s))->data.printListStudent();
+				cout << "After analysing, the room " << scoreID << " is suitable for you\n";
+				MR.findRoom(scoreID)->data.printListStudent();
 				cout << "Do you want to hire this rom (Y/N): ";
 				char input;
 				cin >> input;
 				if (toupper(input) == 'Y')
 				{
-					MR.findRoom(MR.suggestRoom(s))->data.addToList(s);
+					MR.findRoom(scoreID)->data.addToList(s);
 				}
 				else
 				{
@@ -165,26 +166,29 @@ struct ManageHiringRoom {
 			}
 			else
 			{
-				cout << "After analysing, the room " << MR.suggestRoom(temp->data) << " is suitable for you\n";
-				MR.findRoom(MR.suggestRoom(temp->data))->data.printListStudent();
-				cout << "Do you want to hire this rom (Y/N): ";
-				char input;
-				cin >> input;
-				if (toupper(input) == 'Y')
+				if (MR.suggestRoom(temp->data) != -1)
 				{
-					MR.findRoom(MR.suggestRoom(temp->data))->data.addToList(temp->data);
-				}
-				else
-				{
-					cout << setw(0);
-					cout << "Input ID room: ";
-					int id; cin >> id;
-					NodeTree* room = MR.findRoom(id);
-					if (room == NULL)
+					cout << "After analysing, the room " << MR.suggestRoom(temp->data) << " is suitable for you\n";
+					MR.findRoom(MR.suggestRoom(temp->data))->data.printListStudent();
+					cout << "Do you want to hire this rom (Y/N): ";
+					char input;
+					cin >> input;
+					if (toupper(input) == 'Y')
 					{
-						cout << "Room does not exist !!!\n";
+						MR.findRoom(MR.suggestRoom(temp->data))->data.addToList(temp->data);
 					}
-					else room->data.addToList(temp->data);
+					else
+					{
+						cout << setw(0);
+						cout << "Input ID room: ";
+						int id; cin >> id;
+						NodeTree* room = MR.findRoom(id);
+						if (room == NULL)
+						{
+							cout << "Room does not exist !!!\n";
+						}
+						else room->data.addToList(temp->data);
+					}
 				}
 			}
 	}
