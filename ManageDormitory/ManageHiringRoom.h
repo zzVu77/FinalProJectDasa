@@ -68,6 +68,7 @@ struct ManageHiringRoom {
 					else room->data.addToList(s);
 				}
 			}
+
 		}
 		else cout << "Student already exists in this list \n";
 		cout << "----------------------------------------------------------------------\n";

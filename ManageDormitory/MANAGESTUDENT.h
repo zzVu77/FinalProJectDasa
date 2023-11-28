@@ -481,7 +481,9 @@ public:
 			}
 			case 3:
 			{
-				cout << "Input address: "; string str; cin >> str;
+				cout << "Input address: "; 
+				cin.ignore();
+				string str; getline(cin,str);
 				Node* current = head;
 				while (current != nullptr)
 				{

@@ -494,12 +494,13 @@ public:
 	}
 	void updateRomInfo(int id)
 	{
-		if (findRoom(id) == NULL)
+		NodeTree* p = findRoom(id);
+		if (p == NULL)
 		{
 			cout << "Room does not exist in the list !!!\n Update failed \n";
 			return;
 		}
-		NodeTree* p = findRoom(id);
+		//NodeTree* p = findRoom(id);
 		bool flag = true;
 		do
 		{
@@ -543,6 +544,7 @@ public:
 				int n;
 				cin >> n;
 				p->data.Capacity = n;
+				p->data.empty = n - p->data.list.countStudent();
 				break;
 			}
 			case 4:
@@ -555,6 +557,7 @@ public:
 			}
 			}
 		} while (flag);
+		InsertRoom(p->data);
 	}
 	void printRoomBill()
 	{

@@ -32,10 +32,10 @@ struct Student
 				gender << setw(18)
 				<< address << setw(14)
 				<< phoneNo << setw(12) <<
-				falcuty << setw(16) <<
-				major << setw(17)
-				<< enterDate << setw(12)
-				<< roomID << setw(16)
+				falcuty << setw(25) <<
+				major << setw(15)
+				<< enterDate << setw(10)
+				<< roomID << setw(14)
 				<< s << "\n";
 		}
 		else
@@ -46,10 +46,10 @@ struct Student
 				gender << setw(18)
 				<< address << setw(14)
 				<< phoneNo << setw(12) <<
-				falcuty << setw(16) <<
-				major << setw(17)
-				<< enterDate << setw(12)
-				<< roomID << setw(16)
+				falcuty << setw(25) <<
+				major << setw(15)
+				<< enterDate << setw(10)
+				<< roomID << setw(14)
 				<< s << "\n";
 		}
 	}
@@ -86,8 +86,6 @@ struct Student
 		this->falcuty = falcuty;
 		this->major = major;
 		this->enterDate = enterDate;
-//		this->enterDate = enterDate;
-		//this->roomID = roomID;
 		this->status = false;
 	}
 

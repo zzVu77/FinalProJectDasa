@@ -10,7 +10,7 @@ Node* sortedMerge(Node* a, Node* b) {
         return a;
     }
 
-    if ((a->data.roomID>0) and (a->data.firstName <= b->data.firstName || (a->data.firstName == b->data.firstName && a->data.lastName <= b->data.lastName))) {
+    if (  (a->data.firstName <= b->data.firstName || (a->data.firstName == b->data.firstName && a->data.lastName <= b->data.lastName))) {
         result = a;
         result->next = sortedMerge(a->next, b);
     }

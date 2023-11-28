@@ -24,8 +24,7 @@ void printMenuForManageStudent()
 	cout << "| 2. Update Student Information \t \t \t | \n";
 	cout << "| 3. Search Student \t \t \t \t \t | \n";
 	cout << "| 4. Sort List Student \t \t \t \t \t | \n";
-	cout << "| 5. Filter List Student \t \t \t \t | \n";
-	/*cout << "| 6. Add New Student \t \t \t \t \t | \n";*/
+	cout << "| 5. Filter List Student \t \t \t \t | \n";	
 	cout << "| 6. Delete Student \t \t \t \t \t | \n";
 	cout << "| 0. Exit !!! \t \t \t \t \t \t | \n";
 	cout << "----------------------------------------------------------\n";
@@ -53,7 +52,7 @@ void doMenuForManageStudent(ManageStudent& MS)
 			cout << "----------------------------------------------------------------------------- LIST STUDENT -----------------------------------------------------------------------------\n";
 			cout << "| No" << setw(5) << " |       ID" << setw(15) << "|      Name" << setw(16) << "|     DoB" << setw(14)
 				<< "|  Gender" << setw(15) << "|    Address" << setw(16)
-				<< "|  Phone" << setw(14) << "|   Falcuty" << setw(14) << "|   Major" << setw(17)
+				<< "|  Phone" << setw(14) << "|   Falcuty" << setw(14) << "|   Major" << setw(23)
 				<< "|   Enter Date" << setw(15) << "|    Room ID" << setw(16) << "|   Status  |\n";
 			cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 			MS.displayListStudent();
@@ -115,8 +114,6 @@ void printMenuForManageRoom()
 	cout << "| 7. Print Rooms Bill \t \t \t \t \t | \n";
 	cout << "| 0. Exit !!! \t \t \t \t \t \t | \n";
 	cout << "----------------------------------------------------------\n";
-	// Còn chức năng nhập tiền điện nước hằng tháng cho từng phòng và tính tổng tiền điện nước
-
 }
 void doMenuForManageRoom(ManageRoom& MR)
 {
@@ -150,9 +147,7 @@ void doMenuForManageRoom(ManageRoom& MR)
 				cin >> RoomID;
 				if (MR.findRoom(RoomID) != NULL) cout << "Room ID existed. Please input again !\n";
 				else flag = false;
-			} while (flag);
-			/*cout << "Type: ";
-			cin >> TypeRoom;*/
+			} while (flag);		
 			cout << "Input Number Of Bed: ";
 			cin >> NumberOfBed;
 			cout << "Input capacity: ";
@@ -163,7 +158,9 @@ void doMenuForManageRoom(ManageRoom& MR)
 			room.RoomID = RoomID;
 			room.NumberOfBed = NumberOfBed;
 			room.Capacity = Capacity;
+			room.empty = room.Capacity;
 			room.Cost = Cost;
+			room.list.initListStudent();
 			MR.InsertRoom(room);
 			break;
 		}
@@ -185,7 +182,7 @@ void doMenuForManageRoom(ManageRoom& MR)
 			NodeTree* p = MR.findRoom(id);
 			if (p == NULL) { cout << "Room does not exist !\n"; }
 			else
-				if (p->data.Capacity == p->data.Capacity)
+				if (p->data.empty == 0)
 				{
 					cout << "Students are still hiring room. Cannot delete this room\n";
 				}
@@ -319,10 +316,10 @@ void doMenu()
 {
 	ManageStudent MS;
 	MS.initListStudent();
-	MS.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
+	MS.readfile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/students.txt");
 	ManageRoom MR;
 
-	MR.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
+	MR.readfile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/rooms.txt");
 	ManageHiringRoom MHR(MR,MS);
 	bool flag = true;
 	do
@@ -342,12 +339,12 @@ void doMenu()
 		}
 		case 1:
 		{
-			doMenuForManageStudent(MS);
+			doMenuForManageStudent(MHR.MS);
 			break;
 		}
 		case 2:
 		{
-			doMenuForManageRoom(MR);
+			doMenuForManageRoom(MHR.MR);
 			break;
 		}
 		case 3:
@@ -357,6 +354,6 @@ void doMenu()
 		}
 		}
 	} while (flag);
-	MR.writefile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
-	MS.writeFile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
+	MR.writefile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/students.txt");
+	MS.writeFile("E:/HCM_UTE/Semester 3/New folder (2)/hi/FinalProJectDasa/rooms.txt");
 }
