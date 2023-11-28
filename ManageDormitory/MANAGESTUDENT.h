@@ -301,13 +301,14 @@ public:
 	}
 
 	// Function for updating information of student
-	void updateInfo(string id)
+	Student updateInfo(string id)
 	{
 		if (searchNode(id) == NULL)
 		{
 			cout << "Student does not exist in the list !!!\n";
 			cout << "Update failed\n";
-			return;
+			Student a;
+			return a;
 		}
 		Node* p = searchNode(id);
 		bool flag = true;
@@ -430,7 +431,7 @@ public:
 			}
 			}
 		} while (flag);
-
+		return p->data;
 	}
 
 	// Function for filtering list student

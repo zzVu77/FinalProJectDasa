@@ -29,7 +29,7 @@ void printMenuForManageStudent()
 	cout << "| 0. Exit !!! \t \t \t \t \t \t | \n";
 	cout << "----------------------------------------------------------\n";
 }
-void doMenuForManageStudent(ManageStudent& MS)
+void doMenuForManageStudent(ManageHiringRoom& MHR)
 {
 	bool flag = true;
 	do
@@ -55,7 +55,7 @@ void doMenuForManageStudent(ManageStudent& MS)
 				<< "|  Phone" << setw(14) << "|   Falcuty" << setw(14) << "|   Major" << setw(23)
 				<< "|   Enter Date" << setw(15) << "|    Room ID" << setw(16) << "|   Status  |\n";
 			cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-			MS.displayListStudent();
+			MHR.MS.displayListStudent();
 			cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
 			break;
 		}
@@ -65,7 +65,10 @@ void doMenuForManageStudent(ManageStudent& MS)
 			cout << setw(0);
 			cout << "Enter the student ID:";
 			cin >> id;
-			MS.updateInfo(id);
+			Student a= MHR.MS.updateInfo(id);
+
+			NodeTree* b= MHR.MR.findRoom(MHR.MR.findRoomByStudent(id));
+			b->data.list.searchNode(id)->data=a;
 			break;
 		}
 		case 3:
@@ -74,19 +77,19 @@ void doMenuForManageStudent(ManageStudent& MS)
 			cout << setw(0);
 			cout << "Enter the student ID:";
 			cin >> id;
-			MS.searchStudent(id);
+			MHR.MS.searchStudent(id);
 			cout << endl;
 			break;
 		}
 		case 4:
 		{
-			MS.sortStudent();
+			MHR.MS.sortStudent();
 			cout << "Sort sucessfully !!! \n";
 			break;
 		}
 		case 5:
 		{
-			MS.filterStudent();
+			MHR.MS.filterStudent();
 			cout << endl;
 			break;
 		}
@@ -96,7 +99,7 @@ void doMenuForManageStudent(ManageStudent& MS)
 			cout << setw(0);
 			cout << "Enter the student ID:";
 			cin >> id;
-			MS.deleteStudent(id);
+			MHR.MS.deleteStudent(id);
 		}
 
 		}
@@ -340,7 +343,7 @@ void doMenu()
 		}
 		case 1:
 		{
-			doMenuForManageStudent(MHR.MS);
+			doMenuForManageStudent(MHR);
 			break;
 		}
 		case 2:

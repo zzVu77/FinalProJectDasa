@@ -245,19 +245,19 @@ private:
 			return false;
 		if (node->data.getID() == key)
 		{
+			savedInt = 1;
+			saved = node;
 			return true;
 		}
 		bool res1 = ifNodeExists(node->left, key,saved,savedInt);
-		if (res1 && savedInt !=1) {
-			savedInt = 1;
-			saved = node->left;
+		if (res1 ) {
+
 			return true;
 		}
 		bool res2 = ifNodeExists(node->right, key,saved,savedInt);
-		if (res2 && savedInt != 1)
+		if (res2)
 		{
-			savedInt = 1;
-			saved = node->right;
+
 			return true;
 		}
 		return res2;
@@ -572,6 +572,11 @@ public:
 		cout << "Input Room Bill Month " << getCurrentMonth() << endl;
 		inOrderInputBill(head);
 	}
-
+	int findRoomByStudent(string id)
+	{
+		int saved(-1);
+		utilFindIdRoomWithStudent(head, id, saved);
+		return saved;
+	}
 };
 

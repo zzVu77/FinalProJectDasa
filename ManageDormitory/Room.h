@@ -251,6 +251,7 @@ public:
 	void automaticallyAddStudent(ManageStudent& liststudent)
 	{
 		//ManageStudent liststudent = listS;
+		int dem(0);
 		if (list.countStudent() == 0)
 		{
 			Node* first = liststudent.head;
@@ -267,7 +268,7 @@ public:
 			list.addLast(curr);
 			this->empty--;
 			// tìm ra sv phù hợp, add vào list sv của room, xóa khởi list đầu vào
-			while (list.countStudent() != Capacity and liststudent.head != NULL and numberOfGender != list.countStudent())
+			while (list.countStudent() != Capacity and dem!=100  and numberOfGender != list.countStudent())
 			{
 				max = -99999;
 				Node* p = liststudent.head;
@@ -290,21 +291,28 @@ public:
 				{
 					p1 = p1->next;
 				}
-
+				if (p1->data.status == true)
+					break;
 				this->empty--;
 				p1->data.roomID = this->RoomID;
 				p1->data.status = true;
 				list.addLast(p1->data);
+				dem++;
 			}
 			return;
 		}
 		else {
 			float max = 0;
 			// tìm ra sv phù hợp so với sv có sẵn trong list, add vào list sv của room, xóa khởi list đầu vào
-			while (list.countStudent() != Capacity and liststudent.head != NULL)
+			while (list.countStudent() != Capacity and dem!=100)
 			{
 				max = 0;
 				Node* p = liststudent.head;
+				while (p != NULL and p->data.status != false)
+				{
+					p = p->next;
+				}
+
 				while (p != NULL)
 				{
 					Node* curr = list.head;
@@ -344,7 +352,7 @@ public:
 				p1->data.roomID = this->RoomID;
 				p1->data.status = true;
 				list.addLast(p1->data);
-
+				dem++;
 
 			}
 			return;
