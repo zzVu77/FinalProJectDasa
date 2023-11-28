@@ -2,7 +2,7 @@
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ChuanHoa.h(25,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(74,10): warning C4305: 'return': truncation from 'double' to 'float'
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(124,10): warning C4305: 'return': truncation from 'double' to 'float'
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(366,38): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageRoom.h(554,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(82,7): warning C4101: 'rID': unreferenced local variable
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(368,38): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageRoom.h(553,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(87,7): warning C4101: 'rID': unreferenced local variable
   ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\x64\Debug\ManageDormitory.exe

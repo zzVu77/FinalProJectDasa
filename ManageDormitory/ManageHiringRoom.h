@@ -33,6 +33,7 @@ struct ManageHiringRoom {
 			cout << "Input studenn's last name: "; getline(cin, lastName); s.lastName = lastName;
 			cout << "Input studenn's middle name: "; getline(cin, middleName); s.middleName = middleName;
 			cout << "Input studenn's first name: "; getline(cin, firstName); s.lastName = firstName;
+			cout << "Input student's gender: "; getline(cin, gender); s.gender = gender;
 			string dob;
 			do {
 				cout << "Input studenn's birthday: "; getline(cin, dob);
@@ -42,26 +43,30 @@ struct ManageHiringRoom {
 			cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
 			cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
 			cout << "Input studenn's major: "; getline(cin, major); s.major = major;
-			cout << "After analysing, the room " << MR.suggestRoom(s) << " is suitable for you\n";
-			MR.findRoom(MR.suggestRoom(s))->data.printListStudent();
-			cout << "Do you want to hire this rom (Y/N): ";
-			char input;
-			cin >> input;
-			if (toupper(input) == 'Y')
+			if (MR.suggestRoom(s) != -1)
 			{
-				MR.findRoom(MR.suggestRoom(s))->data.addToList(s);
-			}
-			else
-			{
-				cout << setw(0);
-				cout << "Input ID room: ";
-				int id; cin >> id;
-				NodeTree* room = MR.findRoom(id);
-				if (room == NULL)
+
+				cout << "After analysing, the room " << MR.suggestRoom(s) << " is suitable for you\n";
+				MR.findRoom(MR.suggestRoom(s))->data.printListStudent();
+				cout << "Do you want to hire this rom (Y/N): ";
+				char input;
+				cin >> input;
+				if (toupper(input) == 'Y')
 				{
-					cout << "Room does not exist !!!\n";
+					MR.findRoom(MR.suggestRoom(s))->data.addToList(s);
 				}
-				else room->data.addToList(s);
+				else
+				{
+					cout << setw(0);
+					cout << "Input ID room: ";
+					int id; cin >> id;
+					NodeTree* room = MR.findRoom(id);
+					if (room == NULL)
+					{
+						cout << "Room does not exist !!!\n";
+					}
+					else room->data.addToList(s);
+				}
 			}
 		}
 		else cout << "Student already exists in this list \n";

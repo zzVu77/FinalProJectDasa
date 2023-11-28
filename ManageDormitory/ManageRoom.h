@@ -179,7 +179,7 @@ private:
 			return 0 - N->right->height;
 		return N->left->height - N->right->height;
 	}
-	NodeTree* insert(NodeTree* node, Room key)
+	NodeTree* insert(NodeTree* node, Room key)	
 	{
 		if (node == NULL)
 		{
@@ -320,7 +320,7 @@ private:
 		if (root != NULL)
 		{
 			float  p = root->data.scoreSimilarityOfRoom(datas);
-			if (saved <= p and root->data.list.countStudentGender(datas.gender) != 0)
+			if ((saved <= p or p==0 )  and root->data.list.countStudentGender(datas.gender) != 0 and root->data.isEmpty())
 			{
 				saved = p;
 				savedID = root->data.getID();
@@ -353,14 +353,12 @@ public:
 	}
 	void readfile(const char fname[])
 	{
-		
 		ifstream file;
 		file.open(fname);
 		if (!file) {
 			cerr << "Error: file not opened." << endl;
 			return;
 		}
-		//Node* q = head;
 		while (!file.eof())
 		{
 			string id;
@@ -384,6 +382,7 @@ public:
 			InsertRoom(a);
 		}
 		file.close();
+		return;
 	}
 	void writefile(const char fname[])
 	{
@@ -434,7 +433,7 @@ public:
 	}
 	int suggestRoom(Student a)
 	{
-		float score = -1;
+		float score = 0;
 		int id(-1);
 		UtilSuggestRoom(head, a,score,id);		
 		return id;

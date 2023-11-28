@@ -59,11 +59,13 @@ public:
 			getline(file, a.enterDate, ',');
 			getline(file, roomID, '\n');
 			//getline(file, a.exitDate, '\n');
+			a.status = false;
 			a.roomID = stoi(roomID);
 			addLast(a);
 
 		}
 		file.close();
+		return;
 	}
 	void writeFile(const char fname[])
 	{

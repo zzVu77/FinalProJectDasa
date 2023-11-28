@@ -210,6 +210,7 @@ void doMenuForManageRoom(ManageRoom& MR)
 		case 5:
 		{
 			MR.printListRoom();
+			break;
 		}
 		case 6:
 		{

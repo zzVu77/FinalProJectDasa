@@ -184,9 +184,11 @@ public:
 	void printPhong() {
 		cout << setw(0);
 
-		cout << "ID Room: " << RoomID <</* "\tType: " << TypeRoom <<*/ "\tNumber Of Bed : " << NumberOfBed << "\tCapacity: " << Capacity << "\tEmpty: " << empty << "\tCost: " << Cost << '\n';
+		cout << "ID Room: " << RoomID <</* "\tType: " << TypeRoom <<*/ "\tNumber Of Bed : " 
+			<< NumberOfBed << "\tCapacity: " << Capacity << "\tEmpty: " << empty << "\tCost: " << Cost << '\n';
 		return;
 	}
+
 	int getID()
 	{
 		return this->RoomID;
@@ -249,8 +251,6 @@ public:
 	void automaticallyAddStudent(ManageStudent& liststudent)
 	{
 		//ManageStudent liststudent = listS;
-
-
 		if (list.countStudent() == 0)
 		{
 			Node* first = liststudent.head;
@@ -284,7 +284,9 @@ public:
 				}
 
 				Node* p1 = liststudent.head;
-				while ((p1->next != NULL and similarity(curr, p1->data) != max) or (p1->next != NULL and curr.gender != p1->data.gender) or (p1->next != NULL and p1->data.status == true))
+				while ((p1->next != NULL and similarity(curr, p1->data) != max) or 
+					(p1->next != NULL and curr.gender != p1->data.gender) or 
+					(p1->next != NULL and p1->data.status == true))
 				{
 					p1 = p1->next;
 				}
