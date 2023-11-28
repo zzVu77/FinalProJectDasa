@@ -555,7 +555,7 @@ public:
 				cout << "Update the cost: ";
 				double n;
 				cin >> n;
-				p->data.NumberOfBed = n;
+				p->data.Cost = n;
 				break;
 			}
 			}
