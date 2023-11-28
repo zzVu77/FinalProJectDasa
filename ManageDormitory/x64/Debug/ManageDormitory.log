@@ -7,8 +7,5 @@ D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDo
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(343,30): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(374,23): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\Room.h(377,38): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(46,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(51,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(57,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\ManageDormitory\ManageHiringRoom.h(89,7): warning C4101: 'rID': unreferenced local variable
   ManageDormitory.vcxproj -> D:\code\c++\nam2\datastructures\ProjectCuoiKi\GitClone\FinalProJectDasa\x64\Debug\ManageDormitory.exe

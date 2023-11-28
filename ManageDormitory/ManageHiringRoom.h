@@ -43,7 +43,7 @@ struct ManageHiringRoom {
 			cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
 			cout << "Input studenn's falcuty: "; getline(cin, falcuty); s.falcuty = falcuty;
 			cout << "Input studenn's major: "; getline(cin, major); s.major = major;
-			float scoreID(MR.suggestRoom(s));
+			int scoreID(MR.suggestRoom(s));
 			if (scoreID != -1)
 			{
 
