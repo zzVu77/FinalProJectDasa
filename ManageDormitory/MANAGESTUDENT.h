@@ -34,18 +34,12 @@ public:
 		if (!file) {
 			cerr << "Error: file not opened." << endl;
 			return;
-		}
-
-		//Node* q = head;
+		}		
 		while (!file.eof())
 		{
 			Student a;
 			string roomID;
-			//xoa utf neu neu can
-			//if (i == 0)
-			//{
-			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
-			//}
+		
 			getline(file, a.studentID, ',');
 			getline(file, a.lastName, ',');
 			getline(file, a.middleName, ',');
@@ -56,11 +50,8 @@ public:
 			getline(file, a.phoneNo, ',');
 			getline(file, a.falcuty, ',');
 			getline(file, a.major, ',');
-			getline(file, a.enterDate, ',');
-			getline(file, roomID, '\n');
-			//getline(file, a.exitDate, '\n');
-			a.status = false;
-			a.roomID = stoi(roomID);
+			getline(file, a.enterDate, '\n');				
+			a.status = false;			
 			addLast(a);
 
 		}
@@ -77,13 +68,13 @@ public:
 			file << p->data.studentID << "," << p->data.lastName << "," << p->data.middleName << ","
 				<< p->data.firstName << "," << p->data.dob << "," << p->data.gender << ","
 				<< p->data.address << "," << p->data.phoneNo << "," << p->data.falcuty << ","
-				<< p->data.major << "," << p->data.enterDate <<","<<p->data.roomID<< '\n';
+				<< p->data.major << "," << p->data.enterDate << '\n';
 			p = p->next;
 		} while (p->next != NULL);
 		file << p->data.studentID << "," << p->data.lastName << "," << p->data.middleName << ","
 			<< p->data.firstName << "," << p->data.dob << "," << p->data.gender << ","
 			<< p->data.address << "," << p->data.phoneNo << "," << p->data.falcuty << ","
-			<< p->data.major << "," << p->data.enterDate << "," << p->data.roomID;
+			<< p->data.major << "," << p->data.enterDate;
 		file.close();
 		return;
 	}
@@ -373,7 +364,7 @@ public:
 				{
 					cin >> str;		
 					if (checkDate(str) == false) cout << "The date you entered is not valid. Please re-enter !!!\n";
-				} while (checkDate(str)==false);
+				} while (!checkDate(str));
 				p->data.dob = str;
 				cout << "Update success !!!\n";
 				cout << "New information: "; p->data.printInfo(); cout << endl;
@@ -514,18 +505,7 @@ public:
 					current = current->next;
 				}
 				break;
-			}
-			/*case 6:
-			{
-				cout << "Input roomID: "; string str; cin >> str;
-				Node* current = head;
-				while (current != nullptr)
-				{
-					if (current->data.roomID == str) { current->data.printInfo(); }
-					current = current->next;
-				}
-				break;
-			}*/
+			}		
 			case 0:
 			{
 				flag = false;

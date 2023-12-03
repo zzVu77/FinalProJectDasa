@@ -41,16 +41,19 @@ private:
 		}
 		return;
 	}
-	void inOrderEmpty(NodeTree* root)
+	void inOrderEmpty(NodeTree* root, int& n)
 	{
+		
 		if (root != NULL)
 		{
-			inOrderEmpty(root->left);
+			inOrderEmpty(root->left,n);
 			if (root->data.isEmpty())
 			{
 				root->data.printPhong();
+				n++;
 			}
-			inOrderEmpty(root->right);
+			
+			inOrderEmpty(root->right,n);
 		}
 	}
 	void utilFindIdRoomWithStudent(NodeTree* root, string id, int& saveID)
@@ -364,23 +367,17 @@ public:
 		while (!file.eof())
 		{
 			string id;
-			string type;
+			string empty;
 			string beds;
 			string capacity;
-			string cost;
-			//xoa utf neu neu can
-			//if (i == 0)
-			//{
-			//	a.id.erase(a.id.begin(), a.id.begin() + 3);
-			//}
-				
+			string cost;					
 			getline(file, id, ',');
 			getline(file, beds, ',');
 			getline(file, capacity, ',');
 			getline(file, cost, '\n');
 			if (id=="")
 				break;
-			Room a(stoi(id), stoi(beds), stoi(capacity), stod(cost));
+			Room a(stoi(id), stoi(beds), stoi(capacity),stod(cost));
 			InsertRoom(a);
 		}
 		file.close();
@@ -444,7 +441,9 @@ public:
 	// in danh sách các phòng đang còn chỗ trống
 	void printListEmptyRoom()
 	{		
-		inOrderEmpty(head);
+		int n = 0;
+		inOrderEmpty(head,n);
+		if (n == 0) cout << "All rooms are full\n";
 		return;
 	}
 	void hiringRoom()
@@ -495,7 +494,7 @@ public:
 		else cout << "couldn't find it\n";
 		return;
 	}
-	void updateRomInfo(int id)
+	void updateRomInfo(int id, int& saved)
 	{
 		NodeTree* p = findRoom(id);
 		if (p == NULL)
@@ -530,7 +529,15 @@ public:
 				cout << "Update new Room ID: ";
 				int n;
 				cin >> n;
+				saved = n;
+				
 				p->data.RoomID = n;
+				Node* curr = p->data.list.head;
+				do
+				{
+					curr->data.roomID = n;
+					curr = curr->next;
+				} while (curr != NULL);
 				break;
 			}
 			case 2:

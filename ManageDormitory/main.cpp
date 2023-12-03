@@ -12,9 +12,6 @@
 using namespace std;
 int main()
 {
-
-	doMenu();
-
-	
+	doMenu();	
 }
 

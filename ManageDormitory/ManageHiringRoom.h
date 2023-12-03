@@ -37,7 +37,7 @@ struct ManageHiringRoom {
 			string dob;
 			do {
 				cout << "Input studenn's birthday: "; getline(cin, dob);
-			} while (!checkDate(dob));
+			} while (checkDate(dob)==false);
 			s.dob = dob;
 			cout << "Input studenn's address: "; getline(cin, address); s.address = address;
 			cout << "Input studenn's phone number: "; getline(cin, phoneNo); s.phoneNo = phoneNo;
@@ -87,6 +87,7 @@ struct ManageHiringRoom {
 	{
 		string sID;
 		int rID;
+		cout<<"------------- LIST EMPTY ROOMS -------------\n";
 		MR.printListEmptyRoom();
 		cout << setw(0);
 		cout << "Enter student ID: ";
@@ -100,13 +101,17 @@ struct ManageHiringRoom {
 		else
 		{
 			Student a = MS.searchNode(sID)->data;
-			cout << "After analysing, the room " << MR.suggestRoom(a) << " is suitable for you\n";
+			int room = MR.suggestRoom(a);
+			cout << "After analysing, the room " <<room  << " is suitable for you\n";
 			cout << "Do you want to transfer to this rom (Y/N): ";
 			char input;
 			cin >> input;
-			if (toupper(input) == 'Y') {
-				MR.findRoom(MR.suggestRoom(a))->data.deleteStudent(sID);
+			if (toupper(input) == 'Y') {				
+				MR.findRoom(a.roomID)->data.list.searchNode(sID)->data.status = false;
+				MR.findRoom(a.roomID)->data.deleteStudent(sID);
 				MR.findRoom(MR.suggestRoom(a))->data.addToList(a);
+				MS.searchNode(a.studentID)->data.roomID = room;
+			
 			}
 			else
 			{
@@ -124,7 +129,12 @@ struct ManageHiringRoom {
 						cout << setw(0) << "The room is full. Transfered failed !\n";
 					}
 					else
+					{
+						MR.findRoom(a.roomID)->data.list.searchNode(sID)->data.status = false;
+						MR.findRoom(a.roomID)->data.deleteStudent(sID);					
 						room->data.addToList(a);
+						MS.searchNode(a.studentID)->data.roomID = id;
+					}
 			}
 		}
 	}

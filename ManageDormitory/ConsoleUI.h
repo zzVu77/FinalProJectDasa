@@ -66,9 +66,11 @@ void doMenuForManageStudent(ManageHiringRoom& MHR)
 			cout << "Enter the student ID:";
 			cin >> id;
 			Student a= MHR.MS.updateInfo(id);
-
-			NodeTree* b= MHR.MR.findRoom(MHR.MR.findRoomByStudent(id));
-			b->data.list.searchNode(id)->data=a;
+			if(MHR.MR.findRoomByStudent(id)!=-1)\
+			{
+				NodeTree* b = MHR.MR.findRoom(MHR.MR.findRoomByStudent(id));
+				b->data.list.searchNode(id)->data = a;
+			}
 			break;
 		}
 		case 3:
@@ -118,7 +120,7 @@ void printMenuForManageRoom()
 	cout << "| 0. Exit !!! \t \t \t \t \t \t | \n";
 	cout << "----------------------------------------------------------\n";
 }
-void doMenuForManageRoom(ManageRoom& MR)
+void doMenuForManageRoom(ManageRoom& MR, ManageStudent& MS)
 {
 	bool flag = true;
 	do
@@ -173,7 +175,15 @@ void doMenuForManageRoom(ManageRoom& MR)
 			cout << setw(0);
 			cout << "Enter the Room ID:";
 			cin >> id;
-			MR.updateRomInfo(id);
+			int save = id;
+			MR.updateRomInfo(id, save);			
+			Node* curr = MS.head;
+			do
+			{
+				if(curr->data.roomID ==id) curr->data.roomID=save;
+				curr = curr->next;
+			} while (curr->next != NULL);
+
 			break;
 		}
 		case 3:
@@ -204,7 +214,9 @@ void doMenuForManageRoom(ManageRoom& MR)
 			cout << "Enter the Room ID:";
 			cin >> id;
 			NodeTree* p = MR.findRoom(id);
-			p->data.printListStudent();
+			if (p != NULL)
+				p->data.printListStudent();
+			else cout << "Room does not exist\n";
 			break;
 		}
 		case 5:
@@ -319,10 +331,10 @@ void doMenu()
 {
 	ManageStudent MS;
 	MS.initListStudent();
-	MS.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
+	MS.readfile("E:/HCM_UTE/Semester 3/DASA/ManageDormitory/FinalProJectDasa/students.txt");
 	ManageRoom MR;
 
-	MR.readfile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
+	MR.readfile("E:/HCM_UTE/Semester 3/DASA/ManageDormitory/FinalProJectDasa/rooms.txt");
 	ManageHiringRoom MHR(MR,MS);
 	bool flag = true;
 	do
@@ -348,7 +360,7 @@ void doMenu()
 		}
 		case 2:
 		{
-			doMenuForManageRoom(MHR.MR);
+			doMenuForManageRoom(MHR.MR, MS);
 			break;
 		}
 		case 3:
@@ -358,6 +370,6 @@ void doMenu()
 		}
 		}
 	} while (flag);
-	MR.writefile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/rooms.txt");
-	MS.writeFile("D:/code/c++/nam2/datastructures/ProjectCuoiKi/GitClone/FinalProJectDasa/students.txt");
+	MR.writefile("E:/HCM_UTE/Semester 3/DASA/ManageDormitory/FinalProJectDasa/rooms.txt");
+	MS.writeFile("E:/HCM_UTE/Semester 3/DASA/ManageDormitory/FinalProJectDasa/students.txt");
 }

@@ -156,7 +156,6 @@ struct Room
 {
 
 	int RoomID;
-	//string TypeRoom;
 	int NumberOfBed;
 	int Capacity;
 	double Cost;
@@ -172,19 +171,18 @@ struct Room
 public:
 	Room(int idRoom,int numberOfBed, int people, double cost)
 	{
-		this->RoomID = idRoom;
-		//this->TypeRoom = typeRoom;
+		this->RoomID = idRoom;		
 		this->NumberOfBed = numberOfBed;
 		this->Capacity = people;
 		this->Cost = cost;
 		this->list.initListStudent();
-		this->empty = this->Capacity- this->list.countStudent();
+		this->empty = this->Capacity - this->list.countStudent();
 	}
 	Room() {}
 	void printPhong() {
 		cout << setw(0);
 
-		cout << "ID Room: " << RoomID <</* "\tType: " << TypeRoom <<*/ "\tNumber Of Bed : " 
+		cout << "ID Room: " << RoomID << "\tNumber Of Bed : " 
 			<< NumberOfBed << "\tCapacity: " << Capacity << "\tEmpty: " << empty << "\tCost: " << Cost << '\n';
 		return;
 	}
@@ -197,9 +195,7 @@ public:
 	{
 		cout << setw(0);
 		cout << "Input Room ID: ";
-		cin >> RoomID;
-		/*cout << "Type: ";
-		cin >> TypeRoom;*/
+		cin >> RoomID;	
 		cout << "Input Number Of Bed: ";
 		cin >> NumberOfBed;
 		cout << "Input capacity: ";
@@ -213,11 +209,7 @@ public:
 		return a.getID() == RoomID;
 	}
 	void addToList(Student& s)
-	{
-		/*if (this->list.isExisting(s.studentID) == true)
-		{
-			cout << "Student already exists in this list\n ";
-		}*/
+	{	
 		if (list.countStudentGender("Nu") > 0 and s.gender == "Nam")
 		{
 			cout << "This room is for female. Added failed !\n";
@@ -430,7 +422,7 @@ public:
 	}
 	void writeFile(ofstream& a)
 	{
-		a << this->RoomID<<","<< this->NumberOfBed << "," << this->Capacity << "," << this->Cost << '\n';
+		a << this->RoomID<<","<< this->NumberOfBed << "," << this->Capacity <<  "," << this->Cost << '\n';
 		return;
 	}
 	~Room() {}
